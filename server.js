@@ -7,9 +7,9 @@ var twilio = require('twilio');
 
 mongoose.connect('mongodb://localhost/podcast');
 
-// var client = require('./make_call');
-
 var app = express();
+
+// var client = require('./make_call');
 
 app.use(express.static('public'))
 app.use(express.static('node_modules'))
