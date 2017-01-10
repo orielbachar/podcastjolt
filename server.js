@@ -9,7 +9,7 @@ var twilio = require('twilio');
 mongoose.connect('mongodb://localhost/rereddit');
 
 var app = express();
-var client = require('./make_call');
+// var client = require('./make_call');
 
 app.use(express.static('public'))
 app.use(express.static('node_modules'))
