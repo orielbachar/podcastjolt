@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var PostSchema = new mongoose.Schema({
+var RecordingsSchema = new mongoose.Schema({
   date: Date,
   recLength: Number,
   recUser: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
@@ -14,6 +14,6 @@ var PostSchema = new mongoose.Schema({
 //   this.upvotes += 1;
 // };
 
-var Recording = mongoose.model('Post', PostSchema);
+var Recording = mongoose.model('Recording', RecordingsSchema);
 
 module.exports = Recording;
