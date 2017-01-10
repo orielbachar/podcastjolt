@@ -1,12 +1,12 @@
 var mongoose = require('mongoose');
 
 var RecordingsSchema = new mongoose.Schema({
-  date: Date,
-  recLength: Number,
-  recUser: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  dateCreated: Date,
+  duration: Number,
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   listenUsers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   link: String
-});
+}); 
 
 // Would we need any methods for this Schema....?
 // 

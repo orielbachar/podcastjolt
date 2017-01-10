@@ -4,12 +4,12 @@ var mongoose = require('mongoose');
 var request = require('request');
 var http = require('http');
 var twilio = require('twilio');
-// var cheerio = require('cheerio');
 
-mongoose.connect('mongodb://localhost/rereddit');
+mongoose.connect('mongodb://localhost/podcast');
+
+// var client = require('./make_call');
 
 var app = express();
-var client = require('./make_call');
 
 app.use(express.static('public'))
 app.use(express.static('node_modules'))
@@ -17,12 +17,15 @@ app.use(express.static('node_modules'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+var routes = require('./routes/index');
+app.use('/', routes);
 
-//Create server
+//-----Records an incoming call ------
 // Returns TwiML which prompts the caller to record a message
-app.post('/record', (request, response) => {
+app.post('/record', function(request, response){
+
   // Use the Twilio Node.js SDK to build an XML response
-  let twiml = new twilio.TwimlResponse();
+  var twiml = new twilio.TwimlResponse();
   twiml.say('Hello. Please leave a message after the beep.');
 
   // Use <Record> to record the caller's message
@@ -36,11 +39,52 @@ app.post('/record', (request, response) => {
   response.send(twiml.toString());
 });
 
+//-----Retrives all calls ------
+ // Twilio Credentials
+var accountSid = 'ACe175fbe84cb43b81742d9e9516c751af';
+var authToken = 'fce5bbd7a29d1f57c19c4463b7694a03';
+
+//Require the Twilio module and create a REST client
+var client = require('twilio')(accountSid, authToken);
+
+
+client.calls.list(function(err, data) {
+    var calls = [];
+    data.calls.forEach(function(call) {
+        calls.push(call)
+    });
+     retriveRec(calls);
+});
+
+//Retrives recordings for a specific call
+function retriveRec (calls){
+  for (var i = 0; i < calls.length; i++) {
+    //add phone number here to user
+  client.calls(calls[i].sid).recordings.list({
+  }, function(err, data) {
+  	data.recordings.forEach(function(recording) {
+          var recData = {
+            dateCreated: recording.dateCreated,
+            duration: recording.duration,
+            user: {},
+            listenUsers: [],
+            link: recording.uri
+          }
+  	 console.log(recData);
+  	});
+  });
+  }
+};
+
+
+
 // Create an HTTP server and listen for requests on port 3000
 app.listen(1337);
 
 
 console.log('TwiML servin\' server running at http://127.0.0.1:1337/');
+
+
 
 
 
