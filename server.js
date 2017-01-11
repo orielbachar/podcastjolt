@@ -18,8 +18,8 @@ app.use(express.static('node_modules'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// var routes = require('./routes/index');
-// app.use('/', routes);
+var routes = require('./routes/index');
+app.use('/', routes);
 
 var Recording = require('./models/Recordings');
 var User = require('./models/Users');
@@ -52,14 +52,14 @@ var client = require('twilio')(accountSid, authToken);
 //-----Retrives all calls ------
 function listCalls(){
 client.calls.list(function(err, data) {
-   
+
     data.calls.forEach(function(call) {
         Recording.findOne({callSid: call.sid}, function (err, callFound){
-          if(!callFound){ 
+          if(!callFound){
           retriveRec(call);
-          }      
-        }) 
-      });    
+          }
+        })
+      });
   });
 };
 
@@ -91,7 +91,7 @@ app.get('/recordings', function(req, res, next) {
   Recording.find(function(err, recordings){
     if(err){ return next(err); }
 
-    res.json(recordings);
+    res.send(recordings);
   });
 });
 

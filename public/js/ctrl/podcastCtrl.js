@@ -1,7 +1,12 @@
-app.controller('podcastCtrl', ['$scope', 'authService', function($scope, authService){
-  
-  $scope.isLoggedIn = authService.isLoggedIn;
-  $scope.logOut = authService.logOut;
-  
+app.controller('podcastCtrl', ['$scope', 'recordingService', function($scope, recordingService){
+
+  // $scope.isLoggedIn = authService.isLoggedIn;
+  // $scope.logOut = authService.logOut;
+
+
+    recordingService.getAll();
+
+
+
   }
-}]);
+]);
