@@ -1,20 +1,39 @@
 /*icons: https://www.iconfinder.com/iconsets/glyphs*/
 
+#settings {
+	content: url(https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_settings-128.png);
+	float: right;
+	max-height: 7%;
+	max-width: 7%;
+}
+
 #record {
 	content: url(https://cdn1.iconfinder.com/data/icons/iconnice-vector-icon/29/Vector-icons_07-128.png);
 	padding-top: 10%;
-	padding-left: 13%;
+	float: left;
+	padding-left: 12%;
 }
 
 #play {
 	content: url(https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_play-128.png);
 	padding-top: 10%;
 	float: right;
-	padding-right: 7%;
 }
 
 #title {
 	font-family: 'Lobster', Georgia, Times, serif;
-	font-size: 3em;
-	color: black;
+	font-size: 3.8em;
+	color: crimson;
+	text-align: center;
+	padding: 7%;
+}
+
+.normal-text-yes {
+	font-family: 'Cabin', Georgia, Times, serif;
+	font-size: 30%;
+	color: grey;
+}
+
+.max-reg-high {
+	max-height: 90px;
 }
