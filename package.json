@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "angular": "1.5.9",
+    "angular-audio": "^1.7.3",
+    "angular-media-player": "^0.5.8",
     "angular-ui-router": "^0.3.2",
     "body-parser": "^1.15.2",
     "bootstrap": "^3.3.7",
