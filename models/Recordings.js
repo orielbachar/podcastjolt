@@ -2,9 +2,9 @@ var mongoose = require('mongoose');
 
 var RecordingsSchema = new mongoose.Schema({
   dateCreated: Date,
-  duration: Number,
-  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  listenUsers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+  duration: String,
+  user: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
+  listenUsers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
   link: String
 }); 
 

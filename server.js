@@ -6,7 +6,6 @@ var http = require('http');
 var twilio = require('twilio');
 
 mongoose.connect('mongodb://localhost/podcast');
-mongoose.Promise = require('bluebird');
 
 
 var app = express();
@@ -62,6 +61,7 @@ client.calls.list(function(err, data) {
      retriveRec(calls);
 });
 
+
 //Retrives recordings for a specific call
 function retriveRec (calls){
   for (var i = 0; i < calls.length; i++) {
@@ -72,23 +72,16 @@ function retriveRec (calls){
           var recData = {
             dateCreated: recording.dateCreated,
             duration: recording.duration,
-            user: {},
+            user: [],
             listenUsers: [],
             link: recording.uri
           }
   	 console.log(recData);
-     var newRecording = Recording(recData);
-     newRecording.save(function (err) {
-      if (err) return handleError(err);
-      // saved!
-    });
+    var newRecording = new Recording(recData)
+     newRecording.save(function(err, newRecording){
+      if(err){ return next(err); }
 
-    //  newRecording.save(function(err, newRecording){
-    //   if(err){ return next(err); }
-
-    //   res.json(newRecording);
-
-    //   });
+      });
   	});
   });
   }
