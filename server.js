@@ -17,8 +17,12 @@ app.use(express.static('node_modules'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-var routes = require('./routes/index');
-app.use('/', routes);
+// var routes = require('./routes/index');
+// app.use('/', routes);
+
+var Recording = require('./models/Recordings');
+var User = require('./models/Users');
+
 
 //-----Records an incoming call ------
 // Returns TwiML which prompts the caller to record a message
@@ -78,11 +82,14 @@ function retriveRec (calls){
 
 
 
-// Create an HTTP server and listen for requests on port 3000
-app.listen(1337);
+// app.use(favicon(__dirname + '/public/img/favicon.ico'));
+
+app.set('port', (process.env.PORT || 1337));
+app.listen(app.get('port'),function(){
+  console.log('TwiML servin\' server running at', app.get('port'));
+});
 
 
-console.log('TwiML servin\' server running at http://127.0.0.1:1337/');
 
 
 
