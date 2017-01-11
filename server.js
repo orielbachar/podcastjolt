@@ -18,8 +18,8 @@ app.use(express.static('node_modules'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// var routes = require('./routes/index');
-// app.use('/', routes);
+var routes = require('./routes/index');
+app.use('/', routes);
 
 var Recording = require('./models/Recordings');
 var User = require('./models/Users');
