@@ -5,8 +5,10 @@ app.controller('podcastCtrl', ['$scope', 'recordingService', function($scope, re
 
   $scope.getAll = function (){
     recordingService.getAll().then(function(){
-      $scope.record = recordingService.playRecordings()
+          $scope.records = recordingService.playRecordings();
     })
   };
+
+
   }
 ]);
