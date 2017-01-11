@@ -18,5 +18,5 @@ app.config(['$stateProvider','$urlRouterProvider', function($stateProvider, $url
       controller: 'AuthCtrl'
     })
 
-  $urlRouterProvider.otherwise('register');
+  $urlRouterProvider.otherwise('login');
 }]);

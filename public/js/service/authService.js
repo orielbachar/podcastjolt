@@ -1,27 +1,28 @@
 app.factory('authService', ['$http', '$window', function($http, $window){
 
-   var auth = {};
+   var authService = {};
 
-   auth.login = function(user){
+   authService.login = function(user){
      return $http.post('/login', user).then(function(data){
        auth.saveToken(data.data.token);
      });
    }
-   auth.saveToken = function (token) {
-     $window.localStorage['rereddit-jwt'] = token;
+   authService.saveToken = function (token) {
+     $window.localStorage['podcast-jwt'] = token;
    };
 
-   auth.getToken = function (){
-     return $window.localStorage['rereddit-jwt'];
+   authService.getToken = function (){
+     return $window.localStorage['podcast-jwt'];
    }
 
-   auth.register = function (user) {
+   authService.register = function (user) {
+     debugger 
      return $http.post('/register', user).then(function(data){
        auth.saveToken(data.data.token);
      })
    };
 
-   auth.isLoggedIn = function(){
+   authService.isLoggedIn = function(){
      var token = auth.getToken();
 
      if(token){
@@ -31,20 +32,20 @@ app.factory('authService', ['$http', '$window', function($http, $window){
      }
    };
 
-   auth.currentUser = function(){
-     if(auth.isLoggedIn()){
-       var token = auth.getToken();
-       var arrToken = token.split('.');
-       var payload = arrToken[1];
-       var decodedToken = JSON.parse($window.atob(payload));
+   // authService.currentUser = function(){
+   //   if(authService.isLoggedIn()){
+   //     var token = authService.getToken();
+   //     var arrToken = token.split('.');
+   //     var payload = arrToken[1];
+   //     var decodedToken = JSON.parse($window.atob(payload));
 
-       return decodedToken.username;
-     }
+   //     return decodedToken.username;
+   //   }
+   // };
+
+   authService.logOut = function(){
+     $window.localStorage.removeItem('podcast-jwt');
    };
 
-   auth.logOut = function(){
-     $window.localStorage.removeItem('rereddit-jwt');
-   };
-
-  return auth;
+  return authService;
 }]);

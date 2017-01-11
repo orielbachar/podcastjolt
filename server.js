@@ -38,35 +38,36 @@ app.post('/record', function(request, response){
 
   // End the call with <Hangup>
   twiml.hangup();
-
+  listCalls();
   // Render the response as XML in reply to the webhook request
   response.type('text/xml');
   response.send(twiml.toString());
 });
 
-//-----Retrives all calls ------
  // Twilio Credentials
 var accountSid = 'ACe175fbe84cb43b81742d9e9516c751af';
 var authToken = 'fce5bbd7a29d1f57c19c4463b7694a03';
-
-//Require the Twilio module and create a REST client
 var client = require('twilio')(accountSid, authToken);
 
-
+//-----Retrives all calls ------
+function listCalls(){
 client.calls.list(function(err, data) {
-    var calls = [];
+   
     data.calls.forEach(function(call) {
-        calls.push(call)
-    });
-     retriveRec(calls);
-});
+        Recording.findOne({callSid: call.sid}, function (err, callFound){
+          if(!callFound){ 
+          retriveRec(call);
+          }      
+        }) 
+      });    
+  });
+};
 
 
 //Retrives recordings for a specific call
-function retriveRec (calls){
-  for (var i = 0; i < calls.length; i++) {
+function retriveRec (call){
     //add phone number here to user
-  client.calls(calls[i].sid).recordings.list({
+  client.calls(call.sid).recordings.list({
   }, function(err, data) {
   	data.recordings.forEach(function(recording) {
           var recData = {
@@ -74,20 +75,25 @@ function retriveRec (calls){
             duration: recording.duration,
             user: [],
             listenUsers: [],
-            link: recording.uri
+            link: recording.uri,
+            callSid: recording.callSid
           }
-  	 console.log(recData);
     var newRecording = new Recording(recData)
      newRecording.save(function(err, newRecording){
-      if(err){ return next(err); }
-
+      if(newRecording){console.log("recorded and saved to db")}
+      if(err){ console.log(err);}
       });
   	});
   });
-  }
 };
 
+app.get('/recordings', function(req, res, next) {
+  Recording.find(function(err, recordings){
+    if(err){ return next(err); }
 
+    res.json(recordings);
+  });
+});
 
 
 app.set('port', (process.env.PORT || 3000));

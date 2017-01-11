@@ -5,7 +5,8 @@ var RecordingsSchema = new mongoose.Schema({
   duration: String,
   user: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
   listenUsers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
-  link: String
+  link: String,
+  callSid: String
 }); 
 
 // Would we need any methods for this Schema....?
