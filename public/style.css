@@ -2,20 +2,19 @@
 
 #record {
 	content: url(https://cdn1.iconfinder.com/data/icons/iconnice-vector-icon/29/Vector-icons_07-128.png);
-	/*display: inline-block;*/
-	margin-right: auto;
-	margin-right: auto;
-	padding-left: 10%;
-	position: relative;
-	/*padding: 15%;*/
+	padding-top: 10%;
+	padding-left: 13%;
 }
 
 #play {
 	content: url(https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_play-128.png);
-	margin-right: auto;
-	margin-right: auto;
+	padding-top: 10%;
 	float: right;
-	margin-right: 10%;
-	position: relative;
-	/*padding: 15%;*/
+	padding-right: 7%;
+}
+
+#title {
+	font-family: 'Lobster', Georgia, Times, serif;
+	font-size: 3em;
+	color: black;
 }
