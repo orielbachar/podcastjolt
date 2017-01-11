@@ -1,0 +1,39 @@
+/*icons: https://www.iconfinder.com/iconsets/glyphs*/
+
+#record {
+	content: url(https://cdn1.iconfinder.com/data/icons/iconnice-vector-icon/29/Vector-icons_07-128.png);
+	/*display: inline-block;*/
+	margin-right: auto;
+	margin-right: auto;
+	padding: 15%;
+}
+
+#BUTTON_1 {
+    bottom: 0px;
+    color: rgb(41, 43, 44);
+    display: block;
+    height: 51px;
+    left: 0px;
+    min-height: auto;
+    min-width: auto;
+    position: relative;
+    right: 0px;
+    text-size-adjust: 100%;
+    top: 0px;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 83.3594px;
+    z-index: 2;
+    column-rule-color: rgb(41, 43, 44);
+    perspective-origin: 41.6797px 25.5px;
+    transform-origin: 41.6797px 25.5px;
+    user-select: none;
+    background: rgb(230, 230, 230) none repeat scroll 0% 0% / auto padding-box border-box;
+    border: 1px solid rgb(173, 173, 173);
+    border-radius: 4.8px 0 0 4.8px;
+    font: normal normal normal normal 20px / 25px sans-serif;
+    outline: rgb(41, 43, 44) none 0px;
+    padding: 12px 24px;
+    transition: all 0.2s ease-in-out 0s;
+}/*#BUTTON_1*/
