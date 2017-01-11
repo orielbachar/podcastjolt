@@ -22,8 +22,8 @@
 
 #title {
 	font-family: 'Lobster', Georgia, Times, serif;
-	font-size: 3.5em;
-	color: red;
+	font-size: 3.8em;
+	color: crimson;
 	text-align: center;
 	padding: 7%;
 }
@@ -31,4 +31,9 @@
 .normal-text-yes {
 	font-family: 'Cabin', Georgia, Times, serif;
 	font-size: 30%;
+	color: grey;
+}
+
+.max-reg-high {
+	max-height: 90px;
 }
