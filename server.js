@@ -75,6 +75,14 @@ function retriveRec (calls){
             link: recording.uri
           }
   	 console.log(recData);
+     var newRecording = Recording(recData);
+     
+    //  newRecording.save(function(err, newRecording){
+    //   if(err){ return next(err); }
+
+    //   res.json(newRecording);
+
+    //   });
   	});
   });
   }
@@ -82,9 +90,9 @@ function retriveRec (calls){
 
 
 
-// app.use(favicon(__dirname + '/public/img/favicon.ico'));
+app.use(favicon(__dirname + '/public/img/favicon.ico'));
 
-app.set('port', (process.env.PORT || 1337));
+app.set('port', (process.env.PORT || 3000));
 app.listen(app.get('port'),function(){
   console.log('TwiML servin\' server running at', app.get('port'));
 });
