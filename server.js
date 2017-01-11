@@ -7,6 +7,7 @@ var twilio = require('twilio');
 
 mongoose.connect('mongodb://localhost/podcast');
 
+
 var app = express();
 
 // var client = require('./make_call');
@@ -17,8 +18,12 @@ app.use(express.static('node_modules'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-var routes = require('./routes/index');
-app.use('/', routes);
+// var routes = require('./routes/index');
+// app.use('/', routes);
+
+var Recording = require('./models/Recordings');
+var User = require('./models/Users');
+
 
 //-----Records an incoming call ------
 // Returns TwiML which prompts the caller to record a message
@@ -56,6 +61,7 @@ client.calls.list(function(err, data) {
      retriveRec(calls);
 });
 
+
 //Retrives recordings for a specific call
 function retriveRec (calls){
   for (var i = 0; i < calls.length; i++) {
@@ -66,11 +72,16 @@ function retriveRec (calls){
           var recData = {
             dateCreated: recording.dateCreated,
             duration: recording.duration,
-            user: {},
+            user: [],
             listenUsers: [],
             link: recording.uri
           }
   	 console.log(recData);
+    var newRecording = new Recording(recData)
+     newRecording.save(function(err, newRecording){
+      if(err){ return next(err); }
+
+      });
   	});
   });
   }
@@ -78,11 +89,13 @@ function retriveRec (calls){
 
 
 
-// Create an HTTP server and listen for requests on port 3000
-app.listen(1337);
+
+app.set('port', (process.env.PORT || 3000));
+app.listen(app.get('port'),function(){
+  console.log('TwiML servin\' server running at', app.get('port'));
+});
 
 
-console.log('TwiML servin\' server running at http://127.0.0.1:1337/');
 
 
 
