@@ -6,6 +6,8 @@ var http = require('http');
 var twilio = require('twilio');
 
 mongoose.connect('mongodb://localhost/podcast');
+mongoose.Promise = require('bluebird');
+
 
 var app = express();
 
@@ -76,7 +78,11 @@ function retriveRec (calls){
           }
   	 console.log(recData);
      var newRecording = Recording(recData);
-     
+     newRecording.save(function (err) {
+      if (err) return handleError(err);
+      // saved!
+    });
+
     //  newRecording.save(function(err, newRecording){
     //   if(err){ return next(err); }
 
@@ -90,7 +96,6 @@ function retriveRec (calls){
 
 
 
-app.use(favicon(__dirname + '/public/img/favicon.ico'));
 
 app.set('port', (process.env.PORT || 3000));
 app.listen(app.get('port'),function(){
