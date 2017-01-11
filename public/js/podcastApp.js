@@ -5,6 +5,7 @@ app.config(['$stateProvider','$urlRouterProvider', function($stateProvider, $url
     .state('home', {
       url: '/home',
       templateUrl: '/templates/home.html',
+      controller: 'podcastCtrl'
     })
     .state('register', {
       url: '/register',
@@ -17,5 +18,5 @@ app.config(['$stateProvider','$urlRouterProvider', function($stateProvider, $url
       controller: 'AuthCtrl'
     })
 
-  $urlRouterProvider.otherwise('home');
+  $urlRouterProvider.otherwise('login');
 }]);
