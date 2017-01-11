@@ -53,13 +53,13 @@ router.post('/login', function(req, res, next){
   })(req, res, next);
 });
 
-router.get('/recordings', function(req, res, next) {
-  Post.find(function(err, recordings){
-    if(err){ return next(err); }
+// router.get('/recordings', function(req, res, next) {
+//   Post.find(function(err, recordings){
+//     if(err){ return next(err); }
 
-    res.json(recordings);
-  });
-});
+//     res.json(recordings);
+//   });
+// });
 
 // router.post('/posts', function(req, res, next) {
 //   var post = new Post(req.body);
