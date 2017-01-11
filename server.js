@@ -5,7 +5,7 @@ var request = require('request');
 var http = require('http');
 var twilio = require('twilio');
 
-mongoose.connect('mongodb://localhost/podcast');
+mongoose.connect(process.env.MONGOLAB_OLIVE_URI || 'mongodb://localhost/podcast');
 
 
 var app = express();
