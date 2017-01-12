@@ -31,7 +31,7 @@ app.post('/record', function(request, response){
 
   // Use the Twilio Node.js SDK to build an XML response
   var twiml = new twilio.TwimlResponse();
-  twiml.say('Hello. Please leave a message after the beep.');
+  twiml.say('Share with Aaron your biggest challenge in the hackathon, you have 10 seconds after the beep!');
 
   // Use <Record> to record the caller's message
   twiml.record();
