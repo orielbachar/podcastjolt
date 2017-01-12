@@ -8,8 +8,5 @@
     <div>
         <a id="record" href="tel:+17073362989" class="button" role="button" ></a>
         <a id="play" class="button" role="button" ng-click="getAll()"></a>
-				<audio ng-src="{{records}}" autoplay controls></audio>
+					<audio ng-repeat="record in records" ng-src="{{record}}"  controls></audio>
     </div>
-
-
-	</div>

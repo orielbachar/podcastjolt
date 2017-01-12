@@ -1,7 +1,7 @@
 app.factory('recordingService', ['$http' , 'authService', function($http, authService) {
   var recordingService = {
     recordings: [],
-
+    records:[],
     // getAll: function() {
     //     return $http.get('/recordings', {
     //       headers: {
@@ -21,11 +21,14 @@ app.factory('recordingService', ['$http' , 'authService', function($http, authSe
 
       playRecordings: function(){
         var recording = '';
-            recording = recordingService.recordings[0].link;
-            recording = "api.twilio.com" + recording.replace('json', 'wav');
-            return 'https://{ACe175fbe84cb43b81742d9e9516c751af}:{fce5bbd7a29d1f57c19c4463b7694a03}@' + recording;
-      }
-
-  }
+            for (var i = 0; i < recordingService.recordings.length; i++) {
+              recording = recordingService.recordings[i].link;
+              recording = "api.twilio.com" + recording.replace('json', 'wav');
+              recording = 'https://{ACe175fbe84cb43b81742d9e9516c751af}:{fce5bbd7a29d1f57c19c4463b7694a03}@' + recording;
+              recordingService.records.push(recording);
+            }
+            return recordingService.records;
+          }
+        }
     return recordingService
 }]);
