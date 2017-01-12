@@ -9,5 +9,8 @@ app.controller('podcastCtrl', ['$scope', 'recordingService', function($scope, re
 
       })
     }
+
+    $scope.getAll();
+
   }
 ]);
