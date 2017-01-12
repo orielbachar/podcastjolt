@@ -31,7 +31,7 @@ app.post('/record', function(request, response){
 
   // Use the Twilio Node.js SDK to build an XML response
   var twiml = new twilio.TwimlResponse();
-  twiml.say('What was your biggest challegne during the hackathon? You have 10 seconds, after the beep!',{
+  twiml.say('What was your biggest challenge during the hackathon? You have 10 seconds, after the beep!',{
     voice: 'woman'
   });
 

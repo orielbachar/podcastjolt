@@ -10,6 +10,5 @@
 	        <a id="play" class="button" role="button" ng-click="playAll()"></a>
         	<audio ng-repeat="record in records track by $index" id={{$index}} ng-src="{{record}}" onended="playAll()" controls></audio>
 	    </div>
-
 	</div>
 </div>
