@@ -6,8 +6,11 @@ app.controller('podcastCtrl', ['$scope', 'recordingService', function($scope, re
   $scope.getAll = function (){
     recordingService.getAll().then(function(){
           $scope.records = recordingService.playRecordings();
-
       })
+    }
+
+    $scope.playAll = function(){
+      
     }
 
     $scope.getAll();

@@ -7,6 +7,6 @@
 
     <div>
         <a id="record" href="tel:+17073362989" class="button" role="button" ></a>
-        <a id="play" class="button" role="button"></a>
-		<audio ng-repeat="record in records" ng-src="{{record}}" controls></audio>
+        <a id="play" class="button" role="button" ng-click="playAll()"></a>
+		<audio ng-repeat="record in records track by $index" id={{$index}} ng-src="{{record}}" onended="playAll()" controls></audio>
     </div>
