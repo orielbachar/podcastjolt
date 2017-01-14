@@ -7,8 +7,19 @@
 
 	    <div class="row">
 	        <a id="record" href="tel:+17073362989" class="button" role="button" ></a>
-	        <a id="play" class="button" role="button" ng-click="playAll()"></a>
-        	<audio ng-repeat="record in records track by $index" id={{$index}} ng-src="{{record}}" onended="playAll()" controls></audio>
+	        <a id="play" class="button" role="button" ng-click="playAll(0)"></a>
+        	<audio ng-repeat="record in records track by $index" id="record{{$index}}" ng-src="{{record}}" controls></audio>
 	    </div>
 	</div>
 </div>
+
+
+<!-- <script>
+var nextRecord = document.getElementById("#1");
+
+	var playAll = function(){
+			console.log("bla");
+			alert(nextRecord.currentSrc);
+	}
+
+</script> -->

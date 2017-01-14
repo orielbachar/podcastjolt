@@ -8,12 +8,30 @@ app.controller('podcastCtrl', ['$scope', 'recordingService', function($scope, re
           $scope.records = recordingService.playRecordings();
       })
     }
-
-    $scope.playAll = function(){
-      
-    }
+  $scope.playAll = function (i){
+    if ($scope.records.length > i){
+    var nextRecord = document.getElementById("record" + i.toString())
+    nextRecord.play();
+    i += 1;
+    nextRecord.onended = function(){
+      console.log("finished" + i.toString());
+      $scope.playAll(i)
+    };
+  }
+    else{console.log("done")};
+  };
 
     $scope.getAll();
 
   }
 ]);
+
+// $scope.playAll = function (){
+//   var nextRecord = document.getElementById("record0");
+//   nextRecord.play();
+//   for (var i = 0; i < $scope.records.length - 1; i++) {
+//     nextRecord.onended = function(){
+//     document.getElementById("record" + i.toString()).play();
+//   }
+//   }
+// }
