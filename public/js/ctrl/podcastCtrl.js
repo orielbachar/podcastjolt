@@ -18,7 +18,7 @@ app.controller('podcastCtrl', ['$scope', 'recordingService', function($scope, re
       $scope.playAll(i)
     };
   }
-    else{console.log("done")};
+    else{ return "done"};
   };
 
     $scope.getAll();
