@@ -4,6 +4,8 @@ var mongoose = require('mongoose');
 var request = require('request');
 var http = require('http');
 var twilio = require('twilio');
+var passport = require('passport');
+
 
 mongoose.connect(process.env.MONGOLAB_OLIVE_URI || 'mongodb://localhost/podcast');
 
@@ -23,6 +25,9 @@ app.use('/', routes);
 
 var Recording = require('./models/Recordings');
 var User = require('./models/Users');
+
+var expressJWT = require('express-jwt');
+var auth = expressJWT({secret: 'myLittleSecret'});
 
 
 //-----Records an incoming call ------
@@ -56,14 +61,14 @@ var client = require('twilio')(accountSid, authToken);
 //-----Retrives all calls ------
 function listCalls(){
 client.calls.list(function(err, data) {
-   
+
     data.calls.forEach(function(call) {
         Recording.findOne({callSid: call.sid}, function (err, callFound){
-          if(!callFound){ 
+          if(!callFound){
           retriveRec(call);
-          }      
-        }) 
-      });    
+          }
+        })
+      });
   });
 };
 
@@ -82,7 +87,7 @@ function retriveRec (call){
             link: recording.uri,
             callSid: recording.callSid
           }
-    var newRecording = new Recording(recData)
+    var newRecording = new Recording(recData);
      newRecording.save(function(err, newRecording){
       if(newRecording){console.log("recorded and saved to db")}
       if(err){ console.log(err);}
@@ -92,11 +97,13 @@ function retriveRec (call){
 };
 
 app.get('/recordings', function(req, res, next) {
-  Recording.find(function(err, recordings){
+Recording.find({"dateCreated": {
+    "$gte": new Date("2017-01-13"), "$lt": new Date("2017-01-14")
+}}, function(err, recordings){
     if(err){ return next(err); }
 
     res.json(recordings);
-  });
+});
 });
 
 

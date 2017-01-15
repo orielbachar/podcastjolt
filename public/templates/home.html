@@ -16,15 +16,13 @@
 	</div>
 </div>
 
+
 <!-- <script>
   var loaded = false;
 
   var playPause = function () {
     if (!loaded) {
-      this.one('canplay', function () {
-        loaded = true;
-        this.play();
-      }, this);
+
       this.load('/song.mp3');
     } else {
       this.playPause();
@@ -34,8 +32,12 @@
   var audio5js = new Audio5js({
     swf_path: './flash/audio5js.swf',
     ready: function () {
-      var btn = document.getElementById('play-pause');
-      btn.addEventListener('click', playPause.bind(this), false);
+			this.one('canplay', function () {
+        loaded = true;
+        this.play();
+      }, this);
+			this.load(fileName);
     }
   });
+	audio.play();
 </script> -->
