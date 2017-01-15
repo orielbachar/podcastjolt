@@ -1,18 +1,18 @@
-<div class="container" style="width: 80%;">
-	<div style="min-height: 200px; border-style: round;">
+<div class="container" style="width: 85%;">
+	<div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 panel panel-info">
 
-		 <div class="row" style="width: 100%">
-			<a id="settings" href="/#/login" class="button" role="button"></a>
-		</div>
+			<div class="row panel-heading">
+				<a id="settings" href="/#/login" ng-click="logOut()" class="button" role="button"></a>
+			</div>
 
+		    <div class="row" style="margin-bottom: 25px;">
+		        <a id="record" href="tel:+17073362989" class="button" role="button" ></a>
+		        <a id="play" class="button" role="button" ng-click="playAll(0)"></a>
+		    </div>
 
-		<a id="settings" href="/#/login" ng-click="logOut()" class="button" role="button"></a>
-
-	    <div class="row">
-	        <a id="record" href="tel:+17073362989" class="button" role="button" ></a>
-	        <a id="play" class="button" role="button" ng-click="playAll(0)"></a>
-        	<audio ng-repeat="record in records track by $index" id="record{{$index}}" ng-src="{{record}}" controls></audio>
-	    </div>
+	</div>
+	<div>
+		<audio ng-repeat="record in records track by $index" id="record{{$index}}" ng-src="{{record}}" controls></audio>
 	</div>
 </div>
 
