@@ -91,8 +91,10 @@ function retriveRec (call){
   });
 };
 
-app.get('/recordings', function(req, res, next) {
-  Recording.find(function(err, recordings){
+app.get('/recordings/:from/:to', function(req, res, next) {
+  Recording.find({"dateCreated": {
+        "$gte": new Date(req.params.from),
+        "$lt": new Date(req.params.to)}}, function(err, recordings){
     if(err){ return next(err); }
 
     res.json(recordings);
