@@ -4,7 +4,7 @@ app.factory('authService', ['$http', '$window', function($http, $window){
 
    authService.login = function(user){
      return $http.post('/login', user).then(function(data){
-       auth.saveToken(data.data.token);
+       authService.saveToken(data.data.token);
      });
    }
    authService.saveToken = function (token) {
@@ -17,12 +17,12 @@ app.factory('authService', ['$http', '$window', function($http, $window){
 
    authService.register = function (user) {
      return $http.post('/register', user).then(function(data){
-       auth.saveToken(data.data.token);
+       authService.saveToken(data.data.token);
      })
    };
 
    authService.isLoggedIn = function(){
-     var token = auth.getToken();
+     var token = authService.getToken();
 
      if(token){
        return true;
