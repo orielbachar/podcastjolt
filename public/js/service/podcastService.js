@@ -17,7 +17,6 @@ app.factory('recordingService', ['$http' , 'authService', function($http, authSe
     //   }
 
       getAll: function(){
-        debugger;
         return $http.get('/recordings/' + (new Date(recordingService.fromDate)).toString("yyyy-MM-dd") + '/' + (new Date(recordingService.toDate)).toString("yyyy-MM-dd")).then(function(data){
           angular.copy(data.data, recordingService.recordings);
         });
