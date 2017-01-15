@@ -21,7 +21,9 @@ app.factory('recordingService', ['$http' , 'authService', function($http, authSe
 
       playRecordings: function(){
         var recording = '';
+        // var today = new Date();
             for (var i = 0; i < recordingService.recordings.length; i++) {
+              // if (recordingService.recordings[i].dateCreated == )
               recording = recordingService.recordings[i].link;
               recording = "api.twilio.com" + recording.replace('json', 'wav');
               recording = 'https://ACe175fbe84cb43b81742d9e9516c751af:fce5bbd7a29d1f57c19c4463b7694a03@' + recording;

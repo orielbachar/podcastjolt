@@ -16,15 +16,26 @@
 	</div>
 </div>
 
-
-
 <!-- <script>
-var nextRecord = document.getElementById("#1");
+  var loaded = false;
 
-	var playAll = function(){
-			console.log("bla");
-			alert(nextRecord.currentSrc);
-	}
+  var playPause = function () {
+    if (!loaded) {
+      this.one('canplay', function () {
+        loaded = true;
+        this.play();
+      }, this);
+      this.load('/song.mp3');
+    } else {
+      this.playPause();
+    }
+  }
 
+  var audio5js = new Audio5js({
+    swf_path: './flash/audio5js.swf',
+    ready: function () {
+      var btn = document.getElementById('play-pause');
+      btn.addEventListener('click', playPause.bind(this), false);
+    }
+  });
 </script> -->
-
