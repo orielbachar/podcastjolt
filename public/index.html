@@ -6,12 +6,12 @@
     <meta name="keywords" content="voice memo, daily summary, team summary">
     <meta name="description" content="Work your way with podcasting!">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-	<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel='stylesheet' href='font-awesome/css/font-awesome.min.css' />
     <link href='https://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-	<script src="jquery/dist/jquery.min.js"></script>
+    <script src="jquery/dist/jquery.min.js"></script>
     <script src="bootstrap/dist/js/bootstrap.min.js"></script>
 
     <title>Podcast</title>
@@ -19,12 +19,22 @@
 
 <body ng-app="podcastApp" ng-controller="AuthCtrl">
 
-   <div class="row">
+  <div class="row">
+
     <div id="title" class="col-md-6 col-md-offset-3">
       <span class="text-center">Sumcast</span>
       <ui-view></ui-view>
     </div>
+
+    <div class="fullscreen-bg">
+      <video loop muted autoplay class="fullscreen-bg-video">
+      <source src="pics/bgvid-minorg.mp4" type="video/mp4">
+      </video>
+    </div>
+
   </div>
+
+
 <!-- style="background-image: url('http://sc.vaesite.net/__data/715b056ca925edfe9372643c32d31e32.jpg'); height: 667px; opacity: 1;" -->
 
 </body>
