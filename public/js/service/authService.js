@@ -16,6 +16,7 @@ app.factory('authService', ['$http', '$window', function($http, $window){
    }
 
    authService.register = function (user) {
+     console.log(user);
      return $http.post('/register', user).then(function(data){
        authService.saveToken(data.data.token);
      })

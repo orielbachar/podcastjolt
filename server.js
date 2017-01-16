@@ -65,7 +65,19 @@ client.calls.list(function(err, data) {
     data.calls.forEach(function(call) {
         Recording.findOne({callSid: call.sid}, function (err, callFound){
           if(!callFound){
-          retriveRec(call);
+    //format call.fromFormatted to become 054 instead of +972 change to 0. Check if phone number exits in User, then push call ID to that user.
+          var phoneNum = call.fromFormatted.replace('+972', '0');
+          User.findOne({phoneNum: phoneNum}, function(err, userFound){
+            if(userFound){
+              userFound.daySums.push(call.sid);
+               userFound.save(function(err, userSaved){
+                if(userSaved){
+                  retriveRec(call, userSaved);
+                  console.log("User saved to db")}
+                if(err){ console.log(err);}
+             });
+            }
+          })
           }
         })
       });
@@ -74,7 +86,7 @@ client.calls.list(function(err, data) {
 
 
 //Retrives recordings for a specific call
-function retriveRec (call){
+function retriveRec (call, user){
     //add phone number here to user
   client.calls(call.sid).recordings.list({
   }, function(err, data) {
@@ -92,11 +104,16 @@ function retriveRec (call){
       if(newRecording){console.log("recorded and saved to db")}
       if(err){ console.log(err);}
       });
+      //Find new recording then push user ID to that record. (Push recording to user?)
+      Recording.findOne({callSid: recording.callSid}, function(err, recordFound){
+        recordFound.user.push(user._id);
+      })
   	});
   });
 };
 
-app.get('/recordings', function(req, res, next) {
+app.get('/recordings', auth, function(req, res, next) {
+  console.log(req.user);
 Recording.find({"dateCreated": {
     "$gte": new Date("2017-01-13"), "$lt": new Date("2017-01-14")
 }}, function(err, recordings){
