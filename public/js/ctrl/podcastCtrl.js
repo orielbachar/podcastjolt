@@ -5,8 +5,8 @@ app.controller('podcastCtrl', ['$scope', 'recordingService', 'authService', func
     authService.logOut();
 }
 
-  $scope.getAll = function (){
-    recordingService.getAll().then(function(){
+  $scope.getAll = function (fromDate, toDate){
+    recordingService.getAll(fromDate, toDate).then(function(){
       $scope.records = recordingService.playRecordings();
     });
     }
@@ -24,7 +24,17 @@ app.controller('podcastCtrl', ['$scope', 'recordingService', 'authService', func
     else{ console.log("done")};
   };
 
-    $scope.getAll();
+
+$scope.dates = function(fromDate, toDate){
+  fromDate = new Date(fromDate).toString("yyyy-MM-dd");
+  toDate = new Date(toDate).toString("yyyy-MM-dd");
+
+  $scope.getAll(fromDate, toDate);
+
+}
+
+var d = new Date();
+$scope.dates(d.setDate(d.getDate() - 1), new Date());
 
     // <script>
     //   var loaded = false;

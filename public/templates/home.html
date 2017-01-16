@@ -23,7 +23,11 @@
 <div class="container" style="width: 90%;">
   <div class="row col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 panel">
   <div class="bgwhite">
-    <audio ng-repeat="record in records track by $index" id="record{{$index}}" ng-src="{{record}}" controls></audio>
+	<div ng-repeat="record in records track by $index">
+		<span>{{record.user[0].nameFirst}}</span>
+		<audio id="record{{$index}}" ng-src="{{record.link}}" controls></audio>
+	</div>
+
   </div>
   </div>
 

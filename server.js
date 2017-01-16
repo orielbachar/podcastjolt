@@ -88,7 +88,7 @@ function retriveRec (call, user){
           var recData = {
             dateCreated: recording.dateCreated,
             duration: recording.duration,
-            user: user._id,
+            user: user,
             listenUsers: [],
             link: recording.uri,
             callSid: recording.callSid
@@ -111,13 +111,15 @@ function retriveRec (call, user){
 
 //Need to use auth here to get req.user
 app.get('/recordings/:from/:to', function(req, res, next) {
+
   Recording.find({"dateCreated": {
         "$gte": new Date(req.params.from),
-        "$lt": new Date(req.params.to)}}, function(err, recordings){
-    if(err){ return next(err); }
-    res.json(recordings);
-  });
-});
+        "$lt": new Date(req.params.to)}}).populate('user')
+        .exec(function(err, recordings){
+                if(err){ return next(err)}
+                console.log(recordings);
+                res.json(recordings)})
+      });
 
 
 app.set('port', (process.env.PORT || 3000));
