@@ -1,3 +1,9 @@
+* {
+	font-family: 'Cabin', Georgia, Times, serif;
+	color: grey;
+	text-align: center;
+}
+
 .fullscreen-bg {
     position: fixed;
     top: 0;
@@ -41,21 +47,25 @@
 
 
 
-.normal-text-yes {
+/*.normal-text-yes {
 	font-family: 'Cabin', Georgia, Times, serif;
 	font-size: 30%;
 	color: grey;
-}
+}*/
 
 .max-reg-high {
 	max-height: 90px;
 }
 
+.navset {
+	height: 100px;
+}
+
 #settings {
 	content: url(pics/settingsicon.png);
 	float: right;
-	max-height: 6%;
-	max-width: 6%;
+	max-height: 25px;
+	max-width: 25px;
 }
 
 #record {
@@ -74,12 +84,8 @@
 	zoom: 75%;
 }
 
-#title {
-	font-family: 'Lobster', Georgia, Times, serif;
-	font-size: 3.8em;
-	color: crimson;
-	text-align: center;
-	padding: 4%;
+.btn-lobster {
+	font-family: 'Lobster';
 }
 
 /*body {
