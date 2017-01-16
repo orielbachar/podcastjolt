@@ -1,0 +1,35 @@
+<div style="margin-top: 30px; margin-bottom: 20px;">
+      <span style="font-family: 'Lobster'; font-size: 3.8em; color: crimson; text-align: center; padding: 4%; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: rgba(255,80,80,0.15);">Sumcast</span>
+</div>
+
+<!-- <div class="row col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 panel" style="background-color: rgba(255,255,255,0.5);"> -->
+<a href="/#/home">
+  <button class="btn btn-primary" style="float: right;">go back home</button>
+<!-- </div> -->
+</a>
+
+<div class="container">
+    <button href="/#/login" ng-click="logOut()" class="btn btn-danger btn-nav" style="float: left;">Logout</button>
+
+    <div class="navset" style="margin: 50px;">
+                
+        <button class="btn btn-success btn-nav">24h</button>
+        <button class="btn btn-success btn-nav">7days</button>
+        <button class="btn btn-success btn-nav">Custom</button>
+    </div>
+
+    <div style="margin: 10px;">
+        <pre>Selected date is: <em>{{dt | date:'fullDate' }}</em></pre>
+        
+        <div style="display:inline-block; min-height:290px;">
+          <div uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="options"></div>
+        </div>
+
+        <hr />
+        <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button>
+        <button type="button" class="btn btn-sm btn-default" ng-click="setDate(2009, 7, 24)">2009-08-24</button>
+        <button type="button" class="btn btn-sm btn-danger" ng-click="clear()">Clear</button>
+        <button type="button" class="btn btn-sm btn-default" ng-click="toggleMin()" uib-tooltip="After today restriction">Min date</button>
+    </div>  
+
+</div>

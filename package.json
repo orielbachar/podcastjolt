@@ -13,6 +13,7 @@
     "angular": "1.5.9",
     "angular-audio": "^1.7.3",
     "angular-media-player": "^0.5.8",
+    "angular-ui-bootstrap": "^2.4.0",
     "angular-ui-router": "^0.3.2",
     "audio5": "^0.1.10",
     "body-parser": "^1.15.2",
