@@ -4,6 +4,8 @@ var mongoose = require('mongoose');
 var request = require('request');
 var http = require('http');
 var twilio = require('twilio');
+var passport = require('passport');
+
 
 mongoose.connect(process.env.MONGOLAB_OLIVE_URI || 'mongodb://localhost/podcast');
 
@@ -23,6 +25,9 @@ app.use('/', routes);
 
 var Recording = require('./models/Recordings');
 var User = require('./models/Users');
+
+var expressJWT = require('express-jwt');
+var auth = expressJWT({secret: 'myLittleSecret'});
 
 
 //-----Records an incoming call ------
@@ -56,20 +61,26 @@ var client = require('twilio')(accountSid, authToken);
 //-----Retrives all calls ------
 function listCalls(){
 client.calls.list(function(err, data) {
-   
+
     data.calls.forEach(function(call) {
         Recording.findOne({callSid: call.sid}, function (err, callFound){
-          if(!callFound){ 
-          retriveRec(call);
-          }      
-        }) 
-      });    
+          if(!callFound){
+    //format call.fromFormatted to become 054 instead of +972 change to 0. Check if phone number exits in User, then push call ID to that user.
+          var phoneNum = call.fromFormatted.replace('+972', '0');
+          User.findOne({phoneNum: phoneNum}, function(err, userFound){
+            if(userFound){
+              retriveRec(call, userFound); 
+            }
+          })
+          }
+        })
+      });
   });
 };
 
 
 //Retrives recordings for a specific call
-function retriveRec (call){
+function retriveRec (call, user){
     //add phone number here to user
   client.calls(call.sid).recordings.list({
   }, function(err, data) {
@@ -77,26 +88,33 @@ function retriveRec (call){
           var recData = {
             dateCreated: recording.dateCreated,
             duration: recording.duration,
-            user: [],
+            user: user._id,
             listenUsers: [],
             link: recording.uri,
             callSid: recording.callSid
           }
-    var newRecording = new Recording(recData)
+    var newRecording = new Recording(recData);
      newRecording.save(function(err, newRecording){
+       console.log(user);
       if(newRecording){console.log("recorded and saved to db")}
-      if(err){ console.log(err);}
-      });
+      if(err){ console.log(err)}
+
+       //Find new recording then push user ID to that record. (Push recording to user?)
+      // Recording.findOne({callSid: recording.callSid}, function(err, recordFound){
+      //   recordFound.user.push(user);
+
+      // });  
+      })    
   	});
   });
 };
 
+//Need to use auth here to get req.user
 app.get('/recordings/:from/:to', function(req, res, next) {
   Recording.find({"dateCreated": {
         "$gte": new Date(req.params.from),
         "$lt": new Date(req.params.to)}}, function(err, recordings){
     if(err){ return next(err); }
-
     res.json(recordings);
   });
 });

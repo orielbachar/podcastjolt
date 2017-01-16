@@ -11,8 +11,9 @@
 		    </div>
 
 	</div>
-	
+
 </div>
+
 
 <div class="container" style="width: 90%;">
   <div class="row col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 panel">
@@ -20,7 +21,7 @@
     <audio ng-repeat="record in records track by $index" id="record{{$index}}" ng-src="{{record}}" controls></audio>
   </div>
   </div>
-    
+
   </div>
 
 <!-- <script>
@@ -28,10 +29,7 @@
 
   var playPause = function () {
     if (!loaded) {
-      this.one('canplay', function () {
-        loaded = true;
-        this.play();
-      }, this);
+
       this.load('/song.mp3');
     } else {
       this.playPause();
@@ -41,8 +39,12 @@
   var audio5js = new Audio5js({
     swf_path: './flash/audio5js.swf',
     ready: function () {
-      var btn = document.getElementById('play-pause');
-      btn.addEventListener('click', playPause.bind(this), false);
+			this.one('canplay', function () {
+        loaded = true;
+        this.play();
+      }, this);
+			this.load(fileName);
     }
   });
+	audio.play();
 </script> -->
