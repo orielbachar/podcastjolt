@@ -1,12 +1,12 @@
 <form ng-submit="login()">
 
 <div class="container" style="width: 90%">    
-<div id="loginbox" style="margin-top:20px;" class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">                    
+<div id="loginbox" style="margin-top:20px; opacity: 0.92;" class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">                    
     <div class="panel panel-info" >
         <div class="panel-heading">
             <div class="panel-title normal-text-yes"><strong>Sign In</strong></div> 
         </div>     
-        <div style="padding-top:30px" class="panel-body" >
+        <div class="panel-body">
 
             <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
                 
@@ -22,7 +22,7 @@
                             <input id="login-password" style="text-align: left;" type="password" class="form-control normal-text-yes" name="password" placeholder="Password" ng-model="user.password">
                         </div>
 
-                    <div style="margin-top:10px" class="form-group col-sm-12 controls">
+                    <div style="margin-top:10px;" class="form-group col-sm-12 controls">
                           <button class="btn btn-primary btn-lobster">Login</button>
                     </div>
 
@@ -45,5 +45,12 @@
         </div>  
 </div>
 </div>
+
+    <div class="fullscreen-bg" style="background-color: white;">
+      <video loop muted autoplay class="fullscreen-bg-video">
+        <source src="pics/bgvid-minorg-w.webm" type="video/webm" />
+        <source src="pics/bgvid-minorg.mp4" type="video/mp4" />
+      </video>
+    </div>
 
 </form>
