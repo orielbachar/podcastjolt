@@ -95,29 +95,31 @@ function retriveRec (call, user){
           }
     var newRecording = new Recording(recData);
      newRecording.save(function(err, newRecording){
-       console.log(user);
-      if(newRecording){console.log("recorded and saved to db")}
+      if(newRecording){
+        User.findById(user._id, function (err, user) { 
+        user.daySums.push(newRecording)
+        user.save(function(err, savedUser){
+          if(savedUser){console.log("user saved")};
+          if(err){console.log(err)}
+        })
+      }) 
+        console.log("recorded and saved to db")
+      }
       if(err){ console.log(err)}
-
-       //Find new recording then push user ID to that record. (Push recording to user?)
-      // Recording.findOne({callSid: recording.callSid}, function(err, recordFound){
-      //   recordFound.user.push(user);
-
-      // });  
-      })    
+      
+      });
   	});
   });
 };
 
 //Need to use auth here to get req.user
-app.get('/recordings/:from/:to', function(req, res, next) {
+app.get('/recordings/:from/:to', auth, function(req, res, next) {
 
   Recording.find({"dateCreated": {
         "$gte": new Date(req.params.from),
         "$lt": new Date(req.params.to)}}).populate('user')
         .exec(function(err, recordings){
                 if(err){ return next(err)}
-                console.log(recordings);
                 res.json(recordings)})
       });
 

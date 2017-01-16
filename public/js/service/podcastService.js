@@ -14,12 +14,11 @@ app.factory('recordingService', ['$http' , 'authService', function($http, authSe
     //   }
 
       getAll: function(fromDate, toDate){
-  //       return $http.get('/recordings', {
-  //     headers: {
-  //      "Authorization": 'Bearer ' + authService.getToken()
-  //     }
-  //  }).then(function(data){
-        return $http.get('/recordings/' + fromDate + '/' + toDate).then(function(data){
+        return $http.get('/recordings/' + fromDate + '/' + toDate , {
+            headers: {
+             "Authorization": 'Bearer ' + authService.getToken()
+            }
+            }).then(function(data){
           angular.copy(data.data, recordingService.recordings);
         });
       },
