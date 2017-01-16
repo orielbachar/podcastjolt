@@ -69,13 +69,7 @@ client.calls.list(function(err, data) {
           var phoneNum = call.fromFormatted.replace('+972', '0');
           User.findOne({phoneNum: phoneNum}, function(err, userFound){
             if(userFound){
-              userFound.daySums.push(call.sid);
-               userFound.save(function(err, userSaved){
-                if(userSaved){
-                  retriveRec(call, userSaved);
-                  console.log("User saved to db")}
-                if(err){ console.log(err);}
-             });
+              retriveRec(call, userFound); 
             }
           })
           }
@@ -94,33 +88,35 @@ function retriveRec (call, user){
           var recData = {
             dateCreated: recording.dateCreated,
             duration: recording.duration,
-            user: [],
+            user: user._id,
             listenUsers: [],
             link: recording.uri,
             callSid: recording.callSid
           }
     var newRecording = new Recording(recData);
      newRecording.save(function(err, newRecording){
+       console.log(user);
       if(newRecording){console.log("recorded and saved to db")}
-      if(err){ console.log(err);}
-      });
-      //Find new recording then push user ID to that record. (Push recording to user?)
-      Recording.findOne({callSid: recording.callSid}, function(err, recordFound){
-        recordFound.user.push(user._id);
-      })
+      if(err){ console.log(err)}
+
+       //Find new recording then push user ID to that record. (Push recording to user?)
+      // Recording.findOne({callSid: recording.callSid}, function(err, recordFound){
+      //   recordFound.user.push(user);
+
+      // });  
+      })    
   	});
   });
 };
 
-app.get('/recordings', auth, function(req, res, next) {
-  console.log(req.user);
-Recording.find({"dateCreated": {
-    "$gte": new Date("2017-01-13"), "$lt": new Date("2017-01-14")
-}}, function(err, recordings){
+//Need to use auth here to get req.user
+app.get('/recordings/:from/:to', function(req, res, next) {
+  Recording.find({"dateCreated": {
+        "$gte": new Date(req.params.from),
+        "$lt": new Date(req.params.to)}}, function(err, recordings){
     if(err){ return next(err); }
-
     res.json(recordings);
-});
+  });
 });
 
 
