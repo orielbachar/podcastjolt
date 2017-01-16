@@ -20,18 +20,13 @@
 
 <body ng-app="podcastApp" ng-controller="AuthCtrl">
 
-  <div class="row">
+  <div class="row fscreen-bg">
 
     <div class="col-md-6 col-md-offset-3">
-      <span style="font-family: 'Lobster', Georgia, Times, serif; font-size: 3.8em!important; color: crimson; text-align: center; padding: 4%;">Sumcast</span>
+      <div style="margin-top: 30px; margin-bottom: 20px;">
+      <span style="font-family: 'Lobster'; font-size: 3.8em; color: crimson; text-align: center; padding: 4%; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: rgba(255,80,80,0.15);">Sumcast</span>
+      </div>
       <ui-view></ui-view>
-    </div>
-
-    <div class="fullscreen-bg">
-      <video loop muted autoplay class="fullscreen-bg-video">
-        <source src="pics/bgvid-minorg-w.webm" type="video/webm" />
-        <source src="pics/bgvid-minorg.mp4" type="video/mp4" />
-      </video>
     </div>
 
   </div>

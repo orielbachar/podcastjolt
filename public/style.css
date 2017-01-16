@@ -11,7 +11,7 @@
     bottom: 0;
     left: 0;
     overflow: hidden;
-    z-index: -100;
+    z-index: -90;
 }
 
 .fullscreen-bg-video {
@@ -20,6 +20,28 @@
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+.fscreen-bg {
+	background-image: url(pics/greypat.png);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 104.05%;
+    height: 100%;
+    z-index: -100;
+}
+
+@media (min-width: 767px) {
+	.fscreen-bg {
+	background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 104.05%;
+    height: 100%;
+    z-index: -100;
+	}
 }
 
 @media (max-width: 767px) {
@@ -45,8 +67,6 @@
 	height: auto;
 }
 
-
-
 /*.normal-text-yes {
 	font-family: 'Cabin', Georgia, Times, serif;
 	font-size: 30%;
@@ -58,14 +78,18 @@
 }
 
 .navset {
-	height: 100px;
+	height: auto;
+}
+
+.btn-nav {
+	min-width: 75px;
 }
 
 #settings {
 	content: url(pics/settingsicon.png);
 	float: right;
-	max-height: 25px;
-	max-width: 25px;
+	max-height: 22px;
+	max-width: 22px;
 }
 
 #record {
