@@ -24,10 +24,10 @@ app.controller('podcastCtrl', ['$scope', 'recordingService', 'authService', func
     else{ console.log("done")};
   };
 
+$scope.goCalendar = false;
 
 $scope.dates = function(fromDate, toDate){
-  console.log(new Date(fromDate));
-  console.log(new Date(toDate));
+  $scope.currentDate = new Date(toDate).toString("dd-MM-yyyy");
   fromDate = new Date(fromDate).toString("yyyy-MM-dd");
   toDate = new Date(toDate).toString("yyyy-MM-dd");
 
