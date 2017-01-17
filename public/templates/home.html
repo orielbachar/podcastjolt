@@ -4,6 +4,18 @@
       <span style="font-family: 'Lobster'; font-size: 3.8em; color: crimson; text-align: center; padding: 4%; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: rgba(155,80,80,0.25);">Sumcast</span>
 </div>
 
+<div class="row panel" style="background-color: rgba(255,255,255,0.5);">
+  <a id="settings" href="/#/settings" class="button" role="button"></a>
+</div>
+
+<div class="row">
+  <span style="color: white; font-size: 20px">{{currentDate}}</span>
+</div>
+
+<div class="row">
+  <a ng-click="goCalendar = !goCalendar" class="btn btn-primary btn-lg">Calendar</a>
+</div>
+
 <div class="container" style="width: 90%;">
 	<div id="loginbox" class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 panel panel-info" style="background-color: rgba(255,255,255,0.5);">
 
@@ -24,7 +36,9 @@
 
 </div>
 
-<div style="margin: 10px;" ng-controller="dateCtrl">
+
+
+<div ng-show="goCalendar" style="margin: 10px;" ng-controller="dateCtrl">
     <pre>Select Recordings by Date</pre>
 <!-- <em>{{dt | date:'fullDate' }}</em> -->
     <div style="display:inline-block; min-height:290px;">
