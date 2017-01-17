@@ -9,6 +9,7 @@
 </a>
 
 <div class="container">
+<<<<<<< HEAD
  <a href="/#/login">
    <button ng-click="logOut()" class="btn btn-danger btn-nav" style="float: left;">Logout</button>
  </a>
@@ -34,5 +35,32 @@
        <button type="button" class="btn btn-sm btn-danger" ng-click="clear()">Clear</button>
        <button type="button" class="btn btn-sm btn-default" ng-click="toggleMin()" uib-tooltip="After today restriction">Min date</button> -->
    </div>
+=======
+  <a href="/#/login">
+    <button ng-click="logOut()" class="btn btn-danger btn-nav" style="float: left;">Logout</button>
+  </a>
+
+
+    <div class="navset" style="margin: 50px;">
+
+        <!-- <button class="btn btn-success btn-nav">24h</button>
+        <button class="btn btn-success btn-nav">7days</button>
+        <button class="btn btn-success btn-nav">Custom</button> -->
+    </div>
+
+    <div style="margin: 10px;" ng-controller="dateCtrl">
+        <pre>Choose Recordings by Date</em></pre>
+<!-- <em>{{dt | date:'fullDate' }} -->
+        <div style="display:inline-block; min-height:290px;">
+          <div uib-datepicker ng-model="dt" ng-click="setDate(dt)" class="well well-sm" datepicker-options="options"></div>
+        </div>
+
+        <hr />
+        <!-- <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button>
+        <button type="button" class="btn btn-sm btn-default" ng-click="setDate(2009, 7, 24)">2009-08-24</button>
+        <button type="button" class="btn btn-sm btn-danger" ng-click="clear()">Clear</button>
+        <button type="button" class="btn btn-sm btn-default" ng-click="toggleMin()" uib-tooltip="After today restriction">Min date</button> -->
+    </div>
+>>>>>>> 064d488a7eda989c4b9859ad015c73072b4bdb20
 
 </div>
