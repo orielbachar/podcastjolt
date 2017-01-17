@@ -43,6 +43,7 @@
     width: 104.05%;
     height: 100%;
     z-index: -100;
+    opacity: 0.95;
 }
 
 @media (min-width: 767px) {
