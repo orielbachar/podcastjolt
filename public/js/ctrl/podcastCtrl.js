@@ -26,6 +26,8 @@ app.controller('podcastCtrl', ['$scope', 'recordingService', 'authService', func
 
 
 $scope.dates = function(fromDate, toDate){
+  console.log(new Date(fromDate));
+  console.log(new Date(toDate));
   fromDate = new Date(fromDate).toString("yyyy-MM-dd");
   toDate = new Date(toDate).toString("yyyy-MM-dd");
 
@@ -33,8 +35,11 @@ $scope.dates = function(fromDate, toDate){
 
 }
 
-var d = new Date();
-$scope.dates(d.setDate(d.getDate() - 1), new Date());
+$scope.splitDates = function (date){
+  $scope.dates(date.setDate(date.getDate() - 1), date.setDate(date.getDate() + 1));
+}
+
+$scope.splitDates(new Date());
 
     // <script>
     //   var loaded = false;
