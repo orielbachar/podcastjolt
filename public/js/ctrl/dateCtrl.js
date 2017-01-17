@@ -30,6 +30,7 @@ app.controller('dateCtrl', ['$scope', 'recordingService', function($scope, recor
 
   $scope.setDate = function(year, month, day) {
     $scope.dt = new Date(year, month, day);
+    $scope.splitDates(year);
   };
 
   var tomorrow = new Date();
