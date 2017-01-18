@@ -13,8 +13,8 @@ app.factory('recordingService', ['$http' , 'authService', function($http, authSe
     //     });
     //   }
 
-      getAll: function(fromDate, toDate){
-        return $http.get('/recordings/' + fromDate + '/' + toDate , {
+      getAll: function(fromDate, toDate, group){
+        return $http.get('/recordings/' + fromDate + '/' + toDate + '/' + group, {
             headers: {
              "Authorization": 'Bearer ' + authService.getToken()
             }
