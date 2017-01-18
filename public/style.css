@@ -24,7 +24,7 @@
 }
 
 .fscreen-bg {
-	background-image: url(pics/greypat.png);
+	/*background-image: url(pics/greypat.png);*/
     position: absolute;
     top: 0;
     left: 0;
@@ -104,9 +104,17 @@
 }
 
 #record-solo {
-	content: url(pics/recordicon.png);
+	content: url(pics/recordicon-solo.png);
 	padding-top: 10%;
 	zoom: 75%;
+}
+
+#record-red {
+	content: url(pics/recordicon-solo.png);
+	padding-top: 10%;
+	/*float: left;*/
+	/*padding-left: 12%;*/
+	height: 150px;
 }
 
 #play {
@@ -115,6 +123,15 @@
 	float: right;
 	padding-right: 5%;
 	zoom: 75%;
+}
+
+#play-solo {
+	content: url(pics/playicon-solo.png);
+	padding-top: 10%;
+	/*float: right;*/
+	/*padding-right: 5%;*/
+	height: 150px;
+	/*margin-left: 10px;*/
 }
 
 .btn-lobster {
