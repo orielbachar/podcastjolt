@@ -36,12 +36,13 @@ app.post('/record', function(request, response){
 
   // Use the Twilio Node.js SDK to build an XML response
   var twiml = new twilio.TwimlResponse();
-  twiml.say('What was your biggest challenge during the hackathon? You have 10 seconds, after the beep!',{
+  twiml.say('What problems did you have today? Are you on target?',{
     voice: 'woman'
   });
 
   // Use <Record> to record the caller's message
   twiml.record();
+
 
   // End the call with <Hangup>
   twiml.hangup();
@@ -57,6 +58,48 @@ app.post('/record', function(request, response){
 var accountSid = 'ACe175fbe84cb43b81742d9e9516c751af';
 var authToken = 'fce5bbd7a29d1f57c19c4463b7694a03';
 var client = require('twilio')(accountSid, authToken);
+
+//calls notification everyday at 8 o'clock. Checks every minute what time it is
+setInterval(function(){ // Set interval for checking
+    var date = new Date(); 
+    if(date.getHours() === 8 && date.getMinutes() === 0){ 
+        notification();
+    }
+}, 60000); 
+
+//this func calls sendSms sending the users as an argument 
+function notification(){
+User.find(function(err, users){
+                if(err){ return next(err)}
+                users.forEach(function(user){
+                 sendSms(user);
+             })
+          });
+        }
+// Completes the notification function by sending a link to the users with the recordings of previous day
+function sendSms(user){
+  var userNumber = user.phoneNum.replace("0","+972");
+  var nameFirst = user.nameFirst;
+  nameFirst = nameFirst.charAt(0).toUpperCase() + nameFirst.slice(1);
+client.sendMessage({
+
+    to: userNumber,  // Any number Twilio can deliver to
+    from: '+17073362989', // A number you bought from Twilio and can use for outbound communication
+    body: 'Good Morning ' + nameFirst + ',' + ' Listen to recordings here: https://podcastjolt.herokuapp.com/#/home' // body of the SMS message
+
+}, function(err, responseData) { //this function is executed when a response is received from Twilio
+
+    if (!err) { // "err" is an error received during the request, if any
+
+        // "responseData" is a JavaScript object containing data received from Twilio.
+        // A sample response from sending an SMS message is here (click "JSON" to see how the data appears in JavaScript):
+        // http://www.twilio.com/docs/api/rest/sending-sms#example-1
+
+        console.log(responseData.from); 
+        console.log(responseData.body); 
+    }
+});
+};
 
 //-----Retrives all calls ------
 function listCalls(){
@@ -112,7 +155,7 @@ function retriveRec (call, user){
   });
 };
 
-//Need to use auth here to get req.user
+//gets all recordings for a range of dates. Default request is yesterday's and today's date
 app.get('/recordings/:from/:to', auth, function(req, res, next) {
 
   Recording.find({"dateCreated": {
@@ -131,8 +174,3 @@ app.listen(app.get('port'),function(){
 
 
 
-
-
-// var port = process.env.PORT || '3000';
-//
-// app.listen(port);

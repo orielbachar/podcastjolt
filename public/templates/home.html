@@ -13,7 +13,7 @@
 </div>
 
 <div class="row">
-  <a ng-click="goCalendar = !goCalendar" class="btn btn-primary btn-lg">Calendar</a>
+  <a ng-click="toggleCalendar()" class="btn btn-primary btn-lg">Calendar</a>
 </div>
 
 <div class="container" style="width: 90%;">
@@ -34,7 +34,7 @@
 
 
 
-<div ng-show="goCalendar" style="margin: 10px;" ng-controller="dateCtrl">
+<div ng-show="calendar" style="margin: 10px;" ng-controller="dateCtrl">
     <pre>Select Recordings by Date</pre>
 <!-- <em>{{dt | date:'fullDate' }}</em> -->
     <div style="display:inline-block; min-height:290px;">
