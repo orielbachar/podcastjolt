@@ -1,45 +1,41 @@
-<div class="row" style="margin-top: 30px; margin-bottom: 20px;
-  background-color: rgba(255,255,255,0.5); border-radius: 5px;">
-      <span style="font-family: 'Lobster'; font-size: 3.8em; color: crimson; text-align: center; padding: 4%;">Sumcast</span>
+<!-- <div style="border-style: solid; border-color: white black red blue;"> -->
+
+<div class="row" style="margin-top: 30px; margin-bottom: 20px; background-color: rgba(255,255,255,0.5); border-radius: 5px;">
+
+  <span style="font-family: 'Lobster'; font-size: 3.8em; color: crimson; text-align: center; padding: 4%; margin-left: 38px;">Sumcast</span>
+
+  <a href="/#/login">
+    <button ng-click="logOut()" class="btn-logout"></button>
+  </a>
+
 </div>
 
-<div class="row" style="margin-bottom: 15px;">
-  <a href="/#/login">
-    <button ng-click="logOut()" class="btn btn-danger" style="float: right; background-color: rgba(255,255,225,0.7); border-radius: 10px; margin-right: 10px; color: red; font-size: 1.05em;">Logout</button>
+
+<!-- <div class="row" style="margin-bottom: 15px;">
+  
+    <button ng-click="logOut()" class="btn-logout" style="float: right; background-color: rgba(255,255,225,0.7); border-radius: 10px; margin-right: 10px; color: red; font-size: 1.05em;"></button>
   </a>
-</div>
+</div> -->
 
 <div class="row">
-  <a ng-click="toggleCalendar()" class="btn btn-default">*calendar icon*</a>
-  <a ng-click="" class="btn btn-default">*group icon*</a>
+  <span style="margin-right: 10px; font-size: 1.05em;"><strong>Sort by:</strong></span>
+  <a ng-click="toggleCalendar()" class="btn-cal"></a>
+  <a ng-click="toggleTeam()" class="btn-team"></a>
 </div>
 
-<!-- <div class="container" style="width: 99.9%;">
-	<div id="loginbox" class="mainbox panel panel-info" style="background-color: rgba(255,255,255,0.5);">
-
-			<div class="row panel-heading" style="height: 10px;"></div>
-
-		    <div class="row" style="margin-bottom: 25px;">
-		        <a id="record" href="tel:+17073362989" class="button" role="button" ></a>
-		        <a id="play" class="button" role="button" ng-click="playAll(0)"></a>
-		    </div>
-
-      <div class="row panel-heading" style="height: 10px;"></div>
-
-	</div>
-
-</div> -->
 
 <div class="container" style="width: 99.9%;">
   <!-- <div id="loginbox" class="mainbox panel panel-info" style="background-color: rgba(255,255,255,0.5);"> -->
 
       <!-- <div class="row panel-heading" style="height: 10px;"></div> -->
-      <div class="row">
-        <div class="row" style="margin-bottom: 25px;">
-            <a id="record-red" href="tel:+17073362989"><button></button></a>
-            <a id="play-solo" ng-click="playAll(0)"><button></button></a>
+        <div class="row" style="margin-top: 25px;">
+            <span style="margin-right: 67px; font-size: 1.05em;"><strong>Record</strong></span>
+            <span style="margin-right: 12px; font-size: 1.05em;"><strong>Play</strong></span>
         </div>
-      </div>
+        <div class="row">
+            <a id="record-red" href="tel:+17073362989"></a>
+            <a id="play-solo" ng-click="playAll(0)"></a>
+        </div>
       <!-- <div class="row panel-heading" style="height: 10px;"></div> -->
 
   <!-- </div> -->
@@ -78,6 +74,7 @@
     recName.style.color= "blue";
 
 
+
     }
 
 
@@ -87,3 +84,5 @@
   <!-- </div> -->
 
 </div>
+
+<!-- </div ending of border testing> -->
