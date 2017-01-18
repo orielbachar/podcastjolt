@@ -14,16 +14,23 @@ app.controller('podcastCtrl', ['$scope', 'recordingService', 'authService', func
   $scope.playAll = function (i){
     if ($scope.records.length > i){
     var nextRecord = document.getElementById("record" + i.toString())
+    // $scope.listenUser(i);
     nextRecord.play();
-    $scope.Played = true;
+    $scope.recName = {'color': "blue"}
     i += 1;
     nextRecord.onended = function(){
       console.log("finished" + i.toString());
       $scope.playAll(i)
     };
   }
-    else{ console.log("done")};
+    else{console.log("done")};
   };
+
+
+// $scope.listenUser = function(i){
+//   var recName = "recName" + i.toString();
+//   angular.element('#' + recName).css('color', 'blue');
+// };
 
 $scope.toggleCalendar = function (){
   $scope.calendar = !$scope.calendar
@@ -41,6 +48,8 @@ $scope.dates = function(fromDate, toDate){
 $scope.splitDates = function (date){
   $scope.dates(date.setDate(date.getDate() - 1), date.setDate(date.getDate() + 1));
 }
+
+
 
 $scope.calendar = false;
 $scope.splitDates(new Date());
