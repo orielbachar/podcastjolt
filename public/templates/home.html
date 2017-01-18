@@ -67,42 +67,23 @@
   <!-- <div class="row col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 panel" style="background-color: rgba(255,255,255,0.5);"> -->
   <div class="bgwhite">
 	<div ng-repeat="record in records track by $index">
-
-		<span class="Played">{{record.user[0].nameFirst.charAt(0).toUpperCase() + record.user[0].nameFirst.slice(1)}}</span>
+		<span id="recName{{$index}}">{{record.user[0].nameFirst.charAt(0).toUpperCase() + record.user[0].nameFirst.slice(1)}}</span>
     <span>{{record.user[0].nameLast.charAt(0).toUpperCase() + record.user[0].nameLast.slice(1)}}</span>
-		<audio id="record{{$index}}" ng-src="{{record.link}}" controls></audio>
-
+		<audio id="record{{$index}}" ng-src="{{record.link}}" onplay="func(id)" controls style="max-width: 90%;"></audio>
 	</div>
+
+  <script>
+    function func(id){
+    var recName = document.getElementById("recName" + id.replace("record", ""));
+    recName.style.color= "blue";
+
+
+    }
+
+
+  </script>
 
   </div>
   <!-- </div> -->
 
 </div>
-
-
-
-
-<!-- <script>
-  var loaded = false;
-
-  var playPause = function () {
-    if (!loaded) {
-
-      this.load('/song.mp3');
-    } else {
-      this.playPause();
-    }
-  }
-
-  var audio5js = new Audio5js({
-    swf_path: './flash/audio5js.swf',
-    ready: function () {
-			this.one('canplay', function () {
-        loaded = true;
-        this.play();
-      }, this);
-			this.load(fileName);
-    }
-  });
-	audio.play();
-</script> -->
