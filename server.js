@@ -156,7 +156,7 @@ function retriveRec (call, user){
   });
 };
 
-//gets all recordings for a range of dates. Default request is yesterday's and today's date
+//gets all recordings for a range of dates. Default request is yesterday's and today's date. Also looks for specific group.
 app.get('/recordings/:from/:to/:group', auth, function(req, res, next) {
     Recording.find({"dateCreated": {
       "$gte": new Date(req.params.from),
@@ -175,7 +175,10 @@ app.get('/recordings/:from/:to/:group', auth, function(req, res, next) {
           res.json(relevantRecordings);
         }
       })
-});
+    });
+
+
+
 //       })
 //         var relevantRecordings = [];
 //         recordings.forEach(function(recording){

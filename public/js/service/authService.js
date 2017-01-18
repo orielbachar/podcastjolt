@@ -13,7 +13,11 @@ app.factory('authService', ['$http', '$window', function($http, $window){
    authService.addGroup = function(group) {
     return $http.post('/groups', group).then(function(err,data){
       if (err){console.log("error")};
-      authService.getGroups();
+// version 1
+      // authService.getGroups();
+// version 2
+      // authService.groups.push(date)
+      // return authService.groups;
     })
    };
 
