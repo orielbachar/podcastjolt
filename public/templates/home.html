@@ -7,32 +7,42 @@
   <a href="/#/login">
     <button ng-click="logOut()" class="btn btn-danger" style="float: right; background-color: rgba(255,255,225,0.7); border-radius: 10px; margin-right: 10px; color: red; font-size: 1.05em;">Logout</button>
   </a>
-
-  <span style="color: white; font-size: 20px;">Summary for: {{currentDate}}</span>
 </div>
 
 <div class="row">
-
-  <span style="color: white; font-size: 20px">{{currentDate}}</span>
+  <a ng-click="toggleCalendar()" class="btn btn-default">*calendar icon*</a>
+  <a ng-click="" class="btn btn-default">*group icon*</a>
 </div>
 
-<div class="row">
-  <a ng-click="toggleCalendar()" class="btn btn-primary btn-lg">Filter by Date</a>
-</div>
-
-<div class="container" style="width: 90%;">
+<!-- <div class="container" style="width: 99.9%;">
 	<div id="loginbox" class="mainbox panel panel-info" style="background-color: rgba(255,255,255,0.5);">
 
-			<!-- <div class="row panel-heading" style="height: 10px;"></div> -->
+			<div class="row panel-heading" style="height: 10px;"></div>
 
 		    <div class="row" style="margin-bottom: 25px;">
-		        <a id="record-solo" href="tel:+17073362989" class="button" role="button" ></a>
-		        <!-- <a id="play" class="button" role="button" ng-click="playAll(0)"></a> -->
+		        <a id="record" href="tel:+17073362989" class="button" role="button" ></a>
+		        <a id="play" class="button" role="button" ng-click="playAll(0)"></a>
 		    </div>
 
-      <!-- <div class="row panel-heading" style="height: 10px;"></div> -->
+      <div class="row panel-heading" style="height: 10px;"></div>
 
 	</div>
+
+</div> -->
+
+<div class="container" style="width: 99.9%;">
+  <!-- <div id="loginbox" class="mainbox panel panel-info" style="background-color: rgba(255,255,255,0.5);"> -->
+
+      <!-- <div class="row panel-heading" style="height: 10px;"></div> -->
+      <div class="row">
+        <div class="row" style="margin-bottom: 25px;">
+            <a id="record-red" href="tel:+17073362989"><button></button></a>
+            <a id="play-solo" ng-click="playAll(0)"><button></button></a>
+        </div>
+      </div>
+      <!-- <div class="row panel-heading" style="height: 10px;"></div> -->
+
+  <!-- </div> -->
 
 </div>
 
@@ -53,17 +63,17 @@
     <button type="button" class="btn btn-sm btn-default" ng-click="toggleMin()" uib-tooltip="After today restriction">Min date</button> -->
 </div>
 
-<div class="container" style="width: 90%;">
-  <div class="row col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 panel" style="background-color: rgba(255,255,255,0.5);">
+<div class="container" style="width: 99.9%;">
+  <!-- <div class="row col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 panel" style="background-color: rgba(255,255,255,0.5);"> -->
   <div class="bgwhite">
 	<div ng-repeat="record in records track by $index">
 		<span>{{record.user[0].nameFirst}}</span>
     <span>{{record.user[0].nameLast}}</span>
-		<audio id="record{{$index}}" ng-src="{{record.link}}" controls></audio>
+		<audio id="record{{$index}}" ng-src="{{record.link}}" controls style="max-width: 90%;"></audio>
 	</div>
 
   </div>
-  </div>
+  <!-- </div> -->
 
 </div>
 
