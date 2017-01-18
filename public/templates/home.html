@@ -1,15 +1,14 @@
 <div class="row" style="margin-top: 30px; margin-bottom: 20px;
-  background-color: rgba(255,255,255,0.5);">
-      <span style="font-family: 'Lobster'; font-size: 3.8em; color: crimson; text-align: center; padding: 4%; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: rgba(155,80,80,0.25);">Sumcast</span>
+  background-color: rgba(255,255,255,0.5); border-radius: 5px;"> 
+      <span style="font-family: 'Lobster'; font-size: 3.8em; color: crimson; text-align: center; padding: 4%;">Sumcast</span>
 </div>
 
+<div class="row" style="margin-bottom: 15px;">
+  <a href="/#/login">
+    <button ng-click="logOut()" class="btn btn-danger" style="float: right; background-color: rgba(255,255,225,0.7); border-radius: 10px; margin-right: 10px; color: red; font-size: 1.05em;">Logout</button>
+  </a>
 
-<div class="row panel" style="background-color: rgba(255,255,255,0.5);">
-  <a id="settings" href="/#/settings" class="button" role="button"></a>
-</div>
-
-<div class="row">
-  <span style="color: white; font-size: 20px">{{currentDate}}</span>
+  <span style="color: white; font-size: 20px;">Summary for: *{{currentDate}}*</span>
 </div>
 
 <div class="row">
@@ -39,8 +38,9 @@
 <!-- <em>{{dt | date:'fullDate' }}</em> -->
     <div style="display:inline-block; min-height:290px;">
       <div uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="options"></div>
+      <button type="button" class="btn btn-danger" ng-click="setDate(dt)">Set Date</button>
     </div>
-    <button type="button" class="btn btn-danger" ng-click="setDate(dt)">Set Date</button>
+    
     <hr />
     <!-- <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button>
     <button type="button" class="btn btn-sm btn-default" ng-click="setDate(2009, 7, 24)">2009-08-24</button>
