@@ -24,7 +24,9 @@ app.controller('podcastCtrl', ['$scope', 'recordingService', 'authService', func
     else{ console.log("done")};
   };
 
-$scope.goCalendar = false;
+$scope.toggleCalendar = function (){
+  $scope.calendar = !$scope.calendar
+}
 
 $scope.dates = function(fromDate, toDate){
   $scope.currentDate = new Date(toDate).toString("dd-MM-yyyy");
@@ -39,6 +41,7 @@ $scope.splitDates = function (date){
   $scope.dates(date.setDate(date.getDate() - 1), date.setDate(date.getDate() + 1));
 }
 
+$scope.calendar = false;
 $scope.splitDates(new Date());
 
     // <script>
