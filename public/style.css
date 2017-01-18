@@ -103,6 +103,12 @@
 	zoom: 75%;
 }
 
+#record-solo {
+	content: url(pics/recordicon.png);
+	padding-top: 10%;
+	zoom: 75%;
+}
+
 #play {
 	content: url(pics/playicon.png);
 	padding-top: 10%;
