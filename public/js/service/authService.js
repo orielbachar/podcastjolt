@@ -1,6 +1,21 @@
 app.factory('authService', ['$http', '$window', function($http, $window){
 
-   var authService = {};
+   var authService = {
+      groups: []
+   };
+
+   authService.getGroups = function() {
+    return $http.get('/groups').then(function(data){
+      angular.copy(data.data, authService.groups);
+    })
+   };
+
+   authService.addGroup = function(group) {
+    return $http.post('/groups', group).then(function(err,data){
+      if (err){console.log("error")};
+      authService.getGroups();
+    })
+   };
 
    authService.login = function(user){
      return $http.post('/login', user).then(function(data){
@@ -17,7 +32,8 @@ app.factory('authService', ['$http', '$window', function($http, $window){
 
    authService.register = function (user) {
      console.log(user);
-     return $http.post('/register', user).then(function(data){
+     return $http.post('/register', user).then(function(err,data){
+       if (err){console.log("error")};
        authService.saveToken(data.data.token);
      })
    };

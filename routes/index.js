@@ -9,6 +9,7 @@ require('../config/passport');
 
 var Recording = require('../models/Recordings');
 var User = require('../models/Users');
+var Group = require('../models/Groups');
 
 
 router.get('/user', auth, function (req, res) {
@@ -26,6 +27,7 @@ router.post('/register', function(req, res, next){
   user.nameFirst = req.body.nameFirst;
   user.nameLast = req.body.nameLast;
 
+
   user.setPassword(req.body.password)
 
   user.save(function (err){
@@ -34,6 +36,31 @@ router.post('/register', function(req, res, next){
     return res.json({token: user.generateJWT()})
   });
 });
+
+router.post('/groups', function(req, res, next){
+  if(!req.body.name){
+    return res.status(400).json({message: 'Please fill out all fields'});
+  }
+
+  var group = new Group();
+
+  group.name = req.body.name;
+  
+  group.save(function (err, msg){
+    if(err){ return next(err); }
+
+    return res.json(msg)
+  });
+});
+
+router.get('/groups', function(req, res, next) {
+
+  Group.find().populate('user')
+        .exec(function(err, groups){
+                if(err){ return next(err)}
+                res.json(groups)})
+      });
+
 
 router.post('/login', function(req, res, next){
 

@@ -5,8 +5,8 @@ app.controller('podcastCtrl', ['$scope', 'recordingService', 'authService', func
     authService.logOut();
 }
 
-  $scope.getAll = function (fromDate, toDate){
-    recordingService.getAll(fromDate, toDate).then(function(){
+  $scope.getAll = function (fromDate, toDate, group){
+    recordingService.getAll(fromDate, toDate, group).then(function(){
       $scope.records = recordingService.playRecordings();
     });
     }
@@ -33,7 +33,7 @@ $scope.dates = function(fromDate, toDate){
   fromDate = new Date(fromDate).toString("yyyy-MM-dd");
   toDate = new Date(toDate).toString("yyyy-MM-dd");
 
-  $scope.getAll(fromDate, toDate);
+  $scope.getAll(fromDate, toDate, $scope.group);
 
 }
 
@@ -41,7 +41,11 @@ $scope.splitDates = function (date){
   $scope.dates(date.setDate(date.getDate() - 1), date.setDate(date.getDate() + 1));
 }
 
+$scope.groups = authService.groups;
+$scope.group = "All";
+
 $scope.calendar = false;
+// authService.getGroups();
 $scope.splitDates(new Date());
 
     // <script>

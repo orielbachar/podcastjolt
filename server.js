@@ -25,6 +25,7 @@ app.use('/', routes);
 
 var Recording = require('./models/Recordings');
 var User = require('./models/Users');
+var Group = require('./models/Groups');
 
 var expressJWT = require('express-jwt');
 var auth = expressJWT({secret: 'myLittleSecret'});
@@ -156,21 +157,42 @@ function retriveRec (call, user){
 };
 
 //gets all recordings for a range of dates. Default request is yesterday's and today's date
-app.get('/recordings/:from/:to', auth, function(req, res, next) {
-
-  Recording.find({"dateCreated": {
-        "$gte": new Date(req.params.from),
-        "$lt": new Date(req.params.to)}}).populate('user')
-        .exec(function(err, recordings){
-                if(err){ return next(err)}
-                res.json(recordings)})
-      });
+app.get('/recordings/:from/:to/:group', auth, function(req, res, next) {
+    Recording.find({"dateCreated": {
+      "$gte": new Date(req.params.from),
+      "$lt": new Date(req.params.to)}}).populate('user')
+      .exec(function(err, recordings){
+        if(err){ return next(err)}
+        if (req.params.group === "All"){
+          res.json(recordings);
+        } else {
+          let relevantRecordings = [];
+          recordings.forEach(function(recording){
+            if (recording.user[0].Group[0]==req.params.group) {
+              relevantRecordings.push(recording);
+            }
+          })
+          res.json(relevantRecordings);
+        }
+      })
+});
+//       })
+//         var relevantRecordings = [];
+//         recordings.forEach(function(recording){
+//           if (recording.user.Group[0]==req.params.group){
+//             relevantRecordings.push(recording);
+//           }
+//         })
+//         res.json(relevantRecordings)})
+//    }   
+// });
 
 
 app.set('port', (process.env.PORT || 3000));
 app.listen(app.get('port'),function(){
   console.log('TwiML servin\' server running at', app.get('port'));
 });
+
 
 
 
