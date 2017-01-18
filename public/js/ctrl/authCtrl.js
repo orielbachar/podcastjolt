@@ -13,4 +13,8 @@ app.controller('AuthCtrl', ['$scope', '$state', 'authService', function($scope, 
       $state.go('home');
     });
   };
+
+  authService.getGroups();
 }])
+
+

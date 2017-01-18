@@ -7,6 +7,7 @@ var UserSchema = new mongoose.Schema({
   nameLast: {type: String, lowercase: true},
   phoneNum:{type: String, lowercase: true, unique: true},
   daySums: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Recording'}],
+  Group: [String],
   hash: String,
   salt: String
 });
