@@ -1,23 +1,21 @@
 <div class="row" style="margin-top: 30px; margin-bottom: 20px;
-  background-color: rgba(255,255,255,0.5);">
-      <span style="font-family: 'Lobster'; font-size: 3.8em; color: crimson; text-align: center; padding: 4%; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: rgba(155,80,80,0.25);">Sumcast</span>
+  background-color: rgba(255,255,255,0.5); border-radius: 5px;"> 
+      <span style="font-family: 'Lobster'; font-size: 3.8em; color: crimson; text-align: center; padding: 4%;">Sumcast</span>
 </div>
 
-
-<div class="row panel" style="background-color: rgba(255,255,255,0.5);">
-  <a id="settings" href="/#/settings" class="button" role="button"></a>
-</div>
-
-<div class="row">
-  <span style="color: white; font-size: 20px">{{currentDate}}</span>
+<div class="row" style="margin-bottom: 15px;">
+  <a href="/#/login">
+    <button ng-click="logOut()" class="btn btn-danger" style="float: right; background-color: rgba(255,255,225,0.7); border-radius: 10px; margin-right: 10px; color: red; font-size: 1.05em;">Logout</button>
+  </a>
 </div>
 
 <div class="row">
-  <a ng-click="toggleCalendar()" class="btn btn-primary btn-lg">Calendar</a>
+  <a ng-click="toggleCalendar()" class="btn btn-default">*calendar icon*</a>
+  <a ng-click="" class="btn btn-default">*group icon*</a>
 </div>
 
-<div class="container" style="width: 90%;">
-	<div id="loginbox" class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 panel panel-info" style="background-color: rgba(255,255,255,0.5);">
+<!-- <div class="container" style="width: 99.9%;">
+	<div id="loginbox" class="mainbox panel panel-info" style="background-color: rgba(255,255,255,0.5);">
 
 			<div class="row panel-heading" style="height: 10px;"></div>
 
@@ -30,6 +28,22 @@
 
 	</div>
 
+</div> -->
+
+<div class="container" style="width: 99.9%;">
+  <!-- <div id="loginbox" class="mainbox panel panel-info" style="background-color: rgba(255,255,255,0.5);"> -->
+
+      <!-- <div class="row panel-heading" style="height: 10px;"></div> -->
+      <div class="row">
+        <div class="row" style="margin-bottom: 25px;">
+            <a id="record-red" href="tel:+17073362989"><button></button></a>
+            <a id="play-solo" ng-click="playAll(0)"><button></button></a>
+        </div>
+      </div>
+      <!-- <div class="row panel-heading" style="height: 10px;"></div> -->
+
+  <!-- </div> -->
+
 </div>
 
 
@@ -39,8 +53,9 @@
 <!-- <em>{{dt | date:'fullDate' }}</em> -->
     <div style="display:inline-block; min-height:290px;">
       <div uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="options"></div>
+      <button type="button" class="btn btn-danger" ng-click="setDate(dt)">Set Date</button>
     </div>
-    <button type="button" class="btn btn-danger" ng-click="setDate(dt)">Set Date</button>
+    
     <hr />
     <!-- <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button>
     <button type="button" class="btn btn-sm btn-default" ng-click="setDate(2009, 7, 24)">2009-08-24</button>
@@ -48,23 +63,24 @@
     <button type="button" class="btn btn-sm btn-default" ng-click="toggleMin()" uib-tooltip="After today restriction">Min date</button> -->
 </div>
 
-<div class="container" style="width: 90%;">
-  <div class="row col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 panel" style="background-color: rgba(255,255,255,0.5);">
+<div class="container" style="width: 99.9%;">
+  <!-- <div class="row col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 panel" style="background-color: rgba(255,255,255,0.5);"> -->
   <div class="bgwhite">
 	<div ng-repeat="record in records track by $index">
-		<span>{{record.user[0].nameFirst.charAt(0).toUpperCase() + record.user[0].nameFirst.slice(1)}}</span>
-    <span>{{record.user[0].nameLast.charAt(0).toUpperCase() + record.user[0].nameLast.slice(1)}}</span>
-		<audio id="record{{$index}}" ng-src="{{record.link}}" controls></audio>
+		<span>{{record.user[0].nameFirst}}</span>
+    <span>{{record.user[0].nameLast}}</span>
+		<audio id="record{{$index}}" ng-src="{{record.link}}" controls style="max-width: 90%;"></audio>
 	</div>
 
   </div>
-  </div>
+  <!-- </div> -->
+
 </div>
 
 
 
-<!--
-<script>
+
+<!-- <script>
   var loaded = false;
 
   var playPause = function () {

@@ -155,7 +155,6 @@ function retriveRec (call, user){
   });
 };
 
-
 //gets all recordings for a range of dates. Default request is yesterday's and today's date
 app.get('/recordings/:from/:to', auth, function(req, res, next) {
 
