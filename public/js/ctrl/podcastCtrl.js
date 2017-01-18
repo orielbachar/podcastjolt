@@ -15,6 +15,7 @@ app.controller('podcastCtrl', ['$scope', 'recordingService', 'authService', func
     if ($scope.records.length > i){
     var nextRecord = document.getElementById("record" + i.toString())
     nextRecord.play();
+    $scope.Played = true;
     i += 1;
     nextRecord.onended = function(){
       console.log("finished" + i.toString());

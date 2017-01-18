@@ -61,7 +61,7 @@
     -moz-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
-    background-size: cover; 
+    background-size: cover;
   }
 }
 
@@ -123,6 +123,10 @@
 	float: right;
 	padding-right: 5%;
 	zoom: 75%;
+}
+
+.Played{
+	color: blue;
 }
 
 #play-solo {
