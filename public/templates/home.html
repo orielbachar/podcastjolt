@@ -48,12 +48,11 @@
       <span class="caret"></span>
     </button>
       <ul class="dropdown-menu">
+        <li ng-click="getAll(fromDate, toDate,'All')"> All</li>
         <li ng-repeat="team in groups track by $index" ng-click="selectedGroup($index)">{{team.name}}</li>
       </ul>
   </div>
-
-</div>
-
+  </div>
 
 
 <div ng-show="calendar" style="margin: 10px;" ng-controller="dateCtrl">
@@ -64,14 +63,20 @@
       <button type="button" class="btn btn-danger" ng-click="setDate(dt)">Set Date</button>
     </div>
 
+
     <hr />
     <!-- <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button>
     <button type="button" class="btn btn-sm btn-default" ng-click="setDate(2009, 7, 24)">2009-08-24</button>
     <button type="button" class="btn btn-sm btn-danger" ng-click="clear()">Clear</button>
     <button type="button" class="btn btn-sm btn-default" ng-click="toggleMin()" uib-tooltip="After today restriction">Min date</button> -->
 </div>
+<br />
+<div class="row">
+  <p> Recordings of {{group.name}} Teams</p>
+  <p>From Date: {{fromDate}}</p>
+</div>
 
-  
+
 
 
 <div class="container" style="width: 99.9%;">

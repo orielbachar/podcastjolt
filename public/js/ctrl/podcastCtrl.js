@@ -47,6 +47,7 @@ $scope.selectedGroup = function(index){
   $scope.getAll($scope.fromDate, $scope.toDate, $scope.group.name);
 }
 
+
 //defaults:
 $scope.groups = authService.groups;
 $scope.group = {name: "All"};

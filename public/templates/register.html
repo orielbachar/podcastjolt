@@ -5,27 +5,46 @@
 
 <form ng-submit="register()">
 
-<div class="container" style="width: 99.9%">  
+<div class="container" style="width: 99.9%">
 <div id="signupbox" class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
     <div class="panel panel-info" style="background-color: rgba(255,255,255,0.8);">
         <div class="panel-heading">
             <div class="row panel-title normal-text-yes"><strong>Register</strong></div>
-        </div>  
+        </div>
         <div class="panel-body" style="max-height: 480px;">
             <form id="signupform" class="form-horizontal" role="form">
-                
+
                 <div id="signupalert" style="display:none" class="alert alert-danger">
                     <p>Error:</p>
                     <span></span>
                 </div>
-                  
+
+                <div class="row max-reg-high" style="margin-top: 10px;">
+                    <label for="lastname" class="col-md-3 control-label normal-text-yes">Team</label>
+                    <div class="col-md-6">
+
+                      <div ng-controller="podcastCtrl">
+                        <div class="dropdown">
+                          <button placeholder="Team" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <!-- Team -->{{user.Group}}
+                            <span class="caret"></span>
+                          </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                              <li ng-repeat="team in groups"><a ng-click="dropboxitemselected(team)">{{team.name}}</a></li>
+                            </ul>
+                          </div>
+                        </div>
+
+                    </div>
+                </div>
+                
                 <div class="row max-reg-high" style="margin-top: 10px;">
                     <label for="phoneNum" class="col-md-3 control-label normal-text-yes">Phone Number</label>
                     <div class="col-md-6">
                         <input type="text" style="text-align: left;" class="form-control normal-text-yes" name="phoneNum" placeholder="05X-XXX-XXXX" ng-model="user.phoneNum">
                     </div>
                 </div>
-                    
+
                 <div class="row max-reg-high" style="margin-top: 10px;">
                     <label for="firstname" class="col-md-3 control-label normal-text-yes">First Name</label>
                     <div class="col-md-6">
@@ -40,6 +59,24 @@
                     </div>
                 </div>
 
+                <!-- <div ng-controller="podcastCtrl" class="row max-reg-high" style="margin-top: 10px;">
+                    <label for="lastname" class="col-md-3 control-label normal-text-yes">Team</label>
+                    <div class="col-md-6">
+                      <div class="dropdown" style="display: inline-block; margin-left: 10px;">
+                        <button class="btn-team dropdown-toggle" type="button" data-toggle="dropdown">
+                          <span class="caret"></span>
+                        </button>
+                        <select ng-model=user.team ng-options="team.name for team in groups"></select>
+                           <ul class="dropdown-menu">
+                            <li ng-repeat="team in groups track by $index" ng-model="user.team">{{team.name}}</li>
+                          </ul>
+                      </div>
+                    </div>
+                </div> -->
+
+
+
+
                 <div class="row max-reg-high" style="margin-top: 10px;">
                     <label for="password" class="col-md-3 control-label normal-text-yes">Password</label>
                     <div class="col-md-6">
@@ -52,12 +89,12 @@
                 </div>
 
                 <div class="normal-text-yes" style="float:right; position: relative; top:-25px; margin-top: 20px; padding-right: 10px;"><a id="signinlink" href="/#/login">Already registered?</a></div>
-            
-                </div>               
+
+                </div>
             </form>
          </div>
     </div>
- </div> 
+ </div>
  </div>
 
 </form>

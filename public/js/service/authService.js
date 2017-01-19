@@ -32,9 +32,10 @@ app.factory('authService', ['$http', '$window', function($http, $window){
 
    authService.register = function (user) {
      console.log(user);
-     return $http.post('/register', user).then(function(err,data){
-       if (err){console.log("error")};
+     return $http.post('/register', user).then(function(data){
        authService.saveToken(data.data.token);
+     },function(err){
+       console.log("error");
      })
    };
 
