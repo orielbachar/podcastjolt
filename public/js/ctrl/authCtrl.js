@@ -8,13 +8,17 @@ app.controller('AuthCtrl', ['$scope', '$state', 'authService', function($scope, 
 
   };
 
+  $scope.dropboxitemselected = function (team) {
+      $scope.user.Group = team.name;
+     }
+
   $scope.login = function(){
     authService.login($scope.user).then(function(){
       $state.go('home');
     });
   };
 
+  $scope.user.Group = "Select Team...";
+
   authService.getGroups();
 }])
-
-

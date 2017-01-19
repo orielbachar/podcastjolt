@@ -26,7 +26,8 @@ router.post('/register', function(req, res, next){
   user.phoneNum = req.body.phoneNum;
   user.nameFirst = req.body.nameFirst;
   user.nameLast = req.body.nameLast;
-
+  user.Group.push(req.body.Group); 
+  
 
   user.setPassword(req.body.password)
 
