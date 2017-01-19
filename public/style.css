@@ -293,14 +293,14 @@
 #record-red:after{
     content:  "\0000a0";
     display: inline-block;
-    height: 24px;
-    width: 24px;
+    height: 40px;
+    width: 40px;
     line-height: 24px;
     margin: 0 -4px -6px 4px;
     position: relative;
     top: -3px;
     left: -5px;
-    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABWUlEQVRIicXVMS8EQRgG4AdHoUApKpUoVH7A5Qq1UqHyExRKWVGJikThV4golBLRKCWi0YpOpbjqck4xc6y9vd25E/Emk3l355v3m3l35xvSMIszvKOHLh7Qqps4mZjgGGs4jc93uMQVlhM1KvGOw8h7Bb5bNTF1B/OCLT1MFPhpxTwTiQmy2E9F8X5PsOs2UWcoiraU8VKkWlS0Jc8P6iamIBNs4duiPv9fi+pEsxwf1rKS+C/UfYOpmvFizEB86kceG3UJujXjv0rwgekcH4ZOTmdgQVUJXrES+VNF3GMu7qUibgAnaAvVsuW7VOfbBRo4j7GLoyRYwhvusRAT7Qr//T42o/i2YNPRKOJ9bMSVPWMLc/H9JFbjyju4xsw4CWBduL3KDlk7rnxs8T4aaGIvCt9gx4iep2Kk+vPnJ7lRM94SrOHnLdYUdpEv3ZX3wjBkqitpvpXiE1PeZ5k24NXgAAAAAElFTkSuQmCC") no-repeat left center transparent;
+    background: url(pics/micicon.png) no-repeat left center transparent;
     background-size: 100% 100%;
 }
 
@@ -360,14 +360,14 @@
 #play-solo:after{
     content:  "\0000a0";
     display: inline-block;
-    height: 24px;
-    width: 24px;
+    height: 40px;
+    width: 40px;
     line-height: 24px;
     margin: 0 -4px -6px 4px;
     position: relative;
     top: -3px;
     left: -3px;
-    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAA/ElEQVRIie3RP0oDQRiG8R+aMlhYWVhYG/AMgiDYijYq6AXUM4ilVbyAIGjjAQRBsFUQGwU7hVjYahn8VyTFgt+6s+OWeWBgGfZ735lnGFHBeLC3gmu0cYN+06V7+B6up2HhWG5YNPhZ+J7BGc4x21RBpG0RdzjARE5RkaKiaPWwVnK4X1QpipjGCS4xl1MQKYqYxy26mKxTUIcWdvCArSgvR1HEFI6wkVLwH75SClLfoMgrNnGaUlCHDxyig2PBDVrBUOobXGEb93/9lKPoBetYqAonvkEZfQMd+3hPHUpVdIFdPNY4EKoVPWMVSznhZSzjzUBFu6nQEaX8AGnUMbezFartAAAAAElFTkSuQmCC") no-repeat left center transparent;
+    background: url(pics/playicon.png) no-repeat left center transparent;
     background-size: 100% 100%;
 }
 
