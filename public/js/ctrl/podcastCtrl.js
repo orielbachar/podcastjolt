@@ -31,10 +31,10 @@ $scope.toggleCalendar = function (){
 
 $scope.dates = function(fromDate, toDate){
   $scope.currentDate = new Date(toDate).toString("dd-MM-yyyy");
-  fromDate = new Date(fromDate).toString("yyyy-MM-dd");
-  toDate = new Date(toDate).toString("yyyy-MM-dd");
+  $scope.fromDate = new Date(fromDate).toString("yyyy-MM-dd");
+  $scope.toDate = new Date(toDate).toString("yyyy-MM-dd");
 
-  $scope.getAll(fromDate, toDate, $scope.group);
+  $scope.getAll($scope.fromDate, $scope.toDate, $scope.group.name);
 
 }
 
@@ -42,11 +42,15 @@ $scope.splitDates = function (date){
   $scope.dates(date.setDate(date.getDate() - 1), date.setDate(date.getDate() + 1));
 }
 
-$scope.groups = authService.groups;
-$scope.group = "All";
+$scope.selectedGroup = function(index){
+  $scope.group = authService.groups[index];
+  $scope.getAll($scope.fromDate, $scope.toDate, $scope.group.name);
+}
 
+//defaults:
+$scope.groups = authService.groups;
+$scope.group = {name: "All"};
 $scope.calendar = false;
-// authService.getGroups();
 $scope.splitDates(new Date());
 
     // <script>

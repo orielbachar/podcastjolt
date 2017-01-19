@@ -157,7 +157,8 @@ function retriveRec (call, user){
 };
 
 //gets all recordings for a range of dates. Default request is yesterday's and today's date
-app.get('/recordings/:from/:to/:group', auth, function(req, res, next) {
+app.get('/recordings/:from/:to/:group', function(req, res, next) {
+  console.log("checking getAll")
     Recording.find({"dateCreated": {
       "$gte": new Date(req.params.from),
       "$lt": new Date(req.params.to)}}).populate('user')
@@ -168,7 +169,7 @@ app.get('/recordings/:from/:to/:group', auth, function(req, res, next) {
         } else {
           let relevantRecordings = [];
           recordings.forEach(function(recording){
-            if (recording.user[0].Group[0]==req.params.group) {
+            if (recording.user[0].Group[0] == req.params.group) {
               relevantRecordings.push(recording);
             }
           })
