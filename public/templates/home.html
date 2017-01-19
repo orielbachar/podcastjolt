@@ -12,10 +12,11 @@
 
 
 <!-- <div class="row" style="margin-bottom: 15px;">
-  
+
     <button ng-click="logOut()" class="btn-logout" style="float: right; background-color: rgba(255,255,225,0.7); border-radius: 10px; margin-right: 10px; color: red; font-size: 1.05em;"></button>
   </a>
 </div> -->
+
 
 
 <div class="container" style="width: 99.9%;">
@@ -58,6 +59,15 @@
     <button type="button" class="btn btn-sm btn-default" ng-click="toggleMin()" uib-tooltip="After today restriction">Min date</button> -->
 </div>
 
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li ng-repeat="team in groups track by $index" ng-click="selectedGroup($index)">{{team.name}}</li>
+    </ul>
+  </div>
+
+
 <div class="container" style="width: 99.9%;">
   <!-- <div class="row col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 panel" style="background-color: rgba(255,255,255,0.5);"> -->
   <div class="bgwhite">
@@ -67,20 +77,14 @@
 		<audio id="record{{$index}}" ng-src="{{record.link}}" onplay="func(id)" controls style="max-width: 90%;"></audio>
 	</div>
 
-  <script>
+  <!-- <script>
     function func(id){
     var recName = document.getElementById("recName" + id.replace("record", ""));
     recName.style.color= "blue";
-
-
-
     }
-
-
-  </script>
+  </script> -->
 
   </div>
-  <!-- </div> -->
 
 </div>
 
