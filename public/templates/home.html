@@ -17,7 +17,21 @@
   </a>
 </div> -->
 
+<div ng-show="calendar" style="margin: 10px;" ng-controller="dateCtrl">
+    <pre>Select Recordings by Date</pre>
+<!-- <em>{{dt | date:'fullDate' }}</em> -->
+    <div style="display:inline-block; min-height:290px;">
+      <div uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="options"></div>
+      <button type="button" class="btn btn-danger" ng-click="setDate(dt)">Set Date</button>
+    </div>
 
+
+    <hr />
+    <!-- <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button>
+    <button type="button" class="btn btn-sm btn-default" ng-click="setDate(2009, 7, 24)">2009-08-24</button>
+    <button type="button" class="btn btn-sm btn-danger" ng-click="clear()">Clear</button>
+    <button type="button" class="btn btn-sm btn-default" ng-click="toggleMin()" uib-tooltip="After today restriction">Min date</button> -->
+</div>
 
 <div class="container" style="width: 99.9%;">
   <!-- <div id="loginbox" class="mainbox panel panel-info" style="background-color: rgba(255,255,255,0.5);"> -->
@@ -55,21 +69,7 @@
   </div>
 
 
-<div ng-show="calendar" style="margin: 10px;" ng-controller="dateCtrl">
-    <pre>Select Recordings by Date</pre>
-<!-- <em>{{dt | date:'fullDate' }}</em> -->
-    <div style="display:inline-block; min-height:290px;">
-      <div uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="options"></div>
-      <button type="button" class="btn btn-danger" ng-click="setDate(dt)">Set Date</button>
-    </div>
 
-
-    <hr />
-    <!-- <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button>
-    <button type="button" class="btn btn-sm btn-default" ng-click="setDate(2009, 7, 24)">2009-08-24</button>
-    <button type="button" class="btn btn-sm btn-danger" ng-click="clear()">Clear</button>
-    <button type="button" class="btn btn-sm btn-default" ng-click="toggleMin()" uib-tooltip="After today restriction">Min date</button> -->
-</div>
 <br />
 <div class="row">
   <p> Recordings of {{group.name}} Teams</p>
