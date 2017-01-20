@@ -61,12 +61,12 @@ var authToken = 'fce5bbd7a29d1f57c19c4463b7694a03';
 var client = require('twilio')(accountSid, authToken);
 
 //calls notification everyday at 8 o'clock. Checks every minute what time it is
-setInterval(function(){ // Set interval for checking
-    var date = new Date(); 
-    if(date.getHours() === 8 && date.getMinutes() === 0){ 
-        notification();
-    }
-}, 60000); 
+// setInterval(function(){ // Set interval for checking
+//     var date = new Date(); 
+//     if(date.getHours() === 8 && date.getMinutes() === 0){ 
+//         notification();
+//     }
+// }, 60000); 
 
 //this func calls sendSms sending the users as an argument 
 function notification(){
